@@ -3,9 +3,7 @@ import { Movie } from '@/types/movie'
 import { apis } from './api'
 import { SearchResults } from '@/types/search'
 
-export const getAll = async (
-  type: keyof typeof apis.all
-): Promise<[null, Movie[]] | [Error, null]> => {
+export const getAll = async (type: keyof typeof apis.all): Promise<[null, Movie[]] | [Error, null]> => {
   try {
     const response = await fetch(apis.all[type], {
       method: 'GET',
@@ -21,15 +19,11 @@ export const getAll = async (
         backdrop_path: movie.backdrop_path,
         id: movie.id,
         originalLanguage: movie.original_language,
-        originalTitle: movie.original_title
-          ? movie.original_title
-          : movie.original_name ?? '',
+        originalTitle: movie.original_title ? movie.original_title : movie.original_name ?? '',
         overview: movie.overview,
         popularity: movie.popularity,
         poster_path: movie.poster_path,
-        release_date: movie.release_date
-          ? movie.release_date
-          : movie.first_air_date ?? '',
+        release_date: movie.release_date ? movie.release_date : movie.first_air_date ?? '',
         title: movie.title ? movie.title : movie.name ?? '',
         vote_average: movie.vote_average,
         vote_count: movie.vote_count,
@@ -65,15 +59,11 @@ export const searchAll = async (url: string): Promise<SearchResults> => {
         backdrop_path: movie.backdrop_path,
         id: movie.id,
         originalLanguage: movie.original_language,
-        originalTitle: movie.original_title
-          ? movie.original_title
-          : movie.original_name ?? '',
+        originalTitle: movie.original_title ? movie.original_title : movie.original_name ?? '',
         overview: movie.overview,
         popularity: movie.popularity,
         poster_path: movie.poster_path,
-        release_date: movie.release_date
-          ? movie.release_date
-          : movie.first_air_date ?? '',
+        release_date: movie.release_date ? movie.release_date : movie.first_air_date ?? '',
         title: movie.title ? movie.title : movie.name ?? '',
         vote_average: movie.vote_average,
         vote_count: movie.vote_count,

@@ -7,14 +7,14 @@ interface Props {
 export default function Button({ text, type, icon }: Props) {
   if (type === 'secondary') {
     return (
-      <button className='bg-w text-b font-bold rounded-lg w-fit px-8 py-2 flex justify-between items-center gap-3'>
+      <button className='flex w-fit items-center justify-between gap-3 rounded-lg bg-w px-8 py-2 font-bold text-b'>
         {text} {icon}
       </button>
     )
   }
 
   return (
-    <button className='bg-primary text-b font-bold rounded-lg w-fit px-8 py-2 flex justify-between items-center gap-3'>
+    <button className='flex w-fit items-center justify-between gap-3 rounded-lg bg-primary px-8 py-2 font-bold text-b'>
       {text} {icon}
     </button>
   )

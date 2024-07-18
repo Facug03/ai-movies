@@ -17,30 +17,29 @@ export default async function Search() {
       <SearchForm />
 
       <section id='explore-section'>
-        <h1 className='text-t2 text-w font-bold mb-2'>Explore</h1>
+        <h1 className='mb-2 text-t2 font-bold text-w'>Explore</h1>
         <div className='flex flex-wrap gap-4'>
           {data.map((movie) => (
             <article key={movie.id} className='max-w-[9vw]'>
-              <div className='w-[9vw] h-auto rounded-lg mb-3 relative aspect-[2/3]'>
+              <div className='relative mb-3 aspect-[2/3] h-auto w-[9vw] rounded-lg'>
                 {movie.poster_path ? (
                   <Image
                     src={imagesPath(movie.poster_path, '220x330')}
                     fill
                     alt={`${movie.title} poster`}
-                    className='object-contain rounded-lg'
+                    className='rounded-lg object-contain'
                   />
                 ) : (
-                  <div className='w-full h-full bg-w-50 rounded-lg flex justify-center items-center'>
+                  <div className='flex h-full w-full items-center justify-center rounded-lg bg-w-50'>
                     <Img styles='w-10 h-10 fill-b' />
                   </div>
                 )}
               </div>
-              <h3 className='text-t7 text-w font-bold overflow-hidden whitespace-nowrap text-ellipsis'>
+              <h3 className='overflow-hidden text-ellipsis whitespace-nowrap text-t7 font-bold text-w'>
                 {movie.title}
               </h3>
               <p className='text-t8 text-w-75'>
-                {movie.type}{' '}
-                {movie?.release_date && `• ${movie.release_date.split('-')[0]}`}
+                {movie.type} {movie?.release_date && `• ${movie.release_date.split('-')[0]}`}
               </p>
             </article>
           ))}

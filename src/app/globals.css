@@ -3,11 +3,7 @@
 @tailwind utilities;
 
 .mask-image-bg {
-  mask-image: linear-gradient(
-    to bottom,
-    rgba(30, 30, 29, 1) 90%,
-    rgba(30, 30, 29, 0) 100%
-  );
+  mask-image: linear-gradient(to bottom, rgba(30, 30, 29, 1) 90%, rgba(30, 30, 29, 0) 100%);
 }
 
 .hide-element {

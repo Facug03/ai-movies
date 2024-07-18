@@ -2,9 +2,7 @@ import { Data } from '@/types/apiMovieDb/movies'
 import { Movie } from '@/types/movie'
 import { apis } from './api'
 
-export const getMovies = async (
-  type: keyof typeof apis.movies
-): Promise<[null, Movie[]] | [Error, null]> => {
+export const getMovies = async (type: keyof typeof apis.movies): Promise<[null, Movie[]] | [Error, null]> => {
   try {
     const response = await fetch(apis.movies[type], {
       method: 'GET',
