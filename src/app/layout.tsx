@@ -22,7 +22,7 @@ export default function RootLayout({
         className={`${schibstedGrotesk.className} bg-b flex flex-col items-center`}
       >
         <Header />
-        {children}
+        <main className='max-w-[1380px] w-full'>{children}</main>
       </body>
     </html>
   )
