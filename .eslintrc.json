@@ -20,6 +20,9 @@
     "semi": ["warn", "never"],
     "no-undef": "off",
     "@typescript-eslint/no-use-before-define": "off",
-    "multiline-ternary": "off"
+    "multiline-ternary": "off",
+    "space-before-function-paren": "off",
+    "no-use-before-define": "off",
+    "camelcase": "off"
   }
 }
