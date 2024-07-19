@@ -19,6 +19,7 @@
     "no-unused-vars": "error",
     "semi": ["warn", "never"],
     "no-undef": "off",
-    "@typescript-eslint/no-use-before-define": "off"
+    "@typescript-eslint/no-use-before-define": "off",
+    "multiline-ternary": "off"
   }
 }
