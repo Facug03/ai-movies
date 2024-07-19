@@ -10,8 +10,8 @@ export const getAll = async (type: keyof typeof apis.all): Promise<[null, Movie[
       headers: {
         accept: 'application/json',
         Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMzA5MmUxNzhjZmIzMjRhYTY1OGI3NGZmZDExMWY1MiIsIm5iZiI6MTcyMTE3NzY4MS4wMjEwNjIsInN1YiI6IjY2OTE1MTAzNjM2YzQyN2EwNzllMjZjZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rUzH7x6w74nmTOT5ioSc2_ZQ1795NK1BFsim7UeovVw',
-      },
+          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMzA5MmUxNzhjZmIzMjRhYTY1OGI3NGZmZDExMWY1MiIsIm5iZiI6MTcyMTE3NzY4MS4wMjEwNjIsInN1YiI6IjY2OTE1MTAzNjM2YzQyN2EwNzllMjZjZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rUzH7x6w74nmTOT5ioSc2_ZQ1795NK1BFsim7UeovVw'
+      }
     })
     const data = (await response.json()) as Data
     const formatData: Movie[] = data.results.map((movie) => {
@@ -27,7 +27,7 @@ export const getAll = async (type: keyof typeof apis.all): Promise<[null, Movie[
         title: movie.title ? movie.title : movie.name ?? '',
         vote_average: movie.vote_average,
         vote_count: movie.vote_count,
-        type: movie.media_type === 'tv' ? 'Series' : 'Movie',
+        type: movie.media_type === 'tv' ? 'Series' : 'Movie'
       }
     })
 
@@ -47,8 +47,8 @@ export const searchAll = async (url: string): Promise<SearchResults> => {
     headers: {
       accept: 'application/json',
       Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMzA5MmUxNzhjZmIzMjRhYTY1OGI3NGZmZDExMWY1MiIsIm5iZiI6MTcyMTE3NzY4MS4wMjEwNjIsInN1YiI6IjY2OTE1MTAzNjM2YzQyN2EwNzllMjZjZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rUzH7x6w74nmTOT5ioSc2_ZQ1795NK1BFsim7UeovVw',
-    },
+        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMzA5MmUxNzhjZmIzMjRhYTY1OGI3NGZmZDExMWY1MiIsIm5iZiI6MTcyMTE3NzY4MS4wMjEwNjIsInN1YiI6IjY2OTE1MTAzNjM2YzQyN2EwNzllMjZjZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rUzH7x6w74nmTOT5ioSc2_ZQ1795NK1BFsim7UeovVw'
+    }
   })
   const data = (await response.json()) as Data
 
@@ -67,7 +67,7 @@ export const searchAll = async (url: string): Promise<SearchResults> => {
         title: movie.title ? movie.title : movie.name ?? '',
         vote_average: movie.vote_average,
         vote_count: movie.vote_count,
-        type: movie.media_type === 'tv' ? 'Series' : 'Movie',
+        type: movie.media_type === 'tv' ? 'Series' : 'Movie'
       }
     })
 
@@ -75,6 +75,6 @@ export const searchAll = async (url: string): Promise<SearchResults> => {
     page: data.page,
     data: formatData,
     totalPages: data.total_pages,
-    totalResults: data.total_results,
+    totalResults: data.total_results
   }
 }
