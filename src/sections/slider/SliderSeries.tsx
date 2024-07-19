@@ -1,13 +1,13 @@
-import { getMovies } from '@/services/getMovies'
-import { moviesSection } from '@/consts/moviesSection'
+import { seriesSections } from '@/consts/sectionsNames'
+import { getSeries } from '@/services/getSeries'
 import SliderClient from './SliderClient'
 
 interface Props {
-  title: keyof typeof moviesSection
+  title: keyof typeof seriesSections
 }
 
 export default async function Slider({ title }: Props) {
-  const [error, data] = await getMovies(moviesSection[title])
+  const [error, data] = await getSeries(seriesSections[title])
 
   if (error) {
     return <div>Error</div>

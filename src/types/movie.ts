@@ -13,4 +13,6 @@ export interface Movie {
   type?: 'Movie' | 'Series'
 }
 
-export type MoviesSections = 'In theathers' | 'Popular' | 'Top rated' | 'Upcoming'
+export type MoviesSections = 'In theathers' | 'Popular' | 'Top rated films' | 'Upcoming'
+
+export type SeriesSections = 'Animes we recommend'

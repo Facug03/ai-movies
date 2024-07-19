@@ -19,7 +19,7 @@ export default function SliderClient({ title, movies }: Props) {
     dragFree: true,
     duration: 35,
     align: 'start',
-    watchDrag: false,
+    watchDrag: false
   })
 
   return (
@@ -69,7 +69,7 @@ export default function SliderClient({ title, movies }: Props) {
                 {movie.title}
               </h3>
               <p className='text-t8 text-w-75'>
-                Movie {movie?.release_date && `• ${movie.release_date.split('-')[0]}`}
+                {movie.type} {movie?.release_date && `• ${movie.release_date.split('-')[0]}`}
               </p>
             </article>
           ))}

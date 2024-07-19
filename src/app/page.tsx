@@ -1,13 +1,14 @@
 import Hero from '@/sections/Hero'
-import Slider from '@/sections/slider/Slider'
+import SliderMovies from '@/sections/slider/SliderMovies'
+import SliderSeries from '@/sections/slider/SliderSeries'
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <Slider title='In theathers' />
-      <Slider title='Top rated' />
-      <Slider title='Popular' />
+      <SliderMovies title='In theathers' />
+      <SliderMovies title='Top rated films' />
+      <SliderSeries title='Animes we recommend' />
     </>
   )
 }
