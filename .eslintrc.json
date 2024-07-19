@@ -5,24 +5,19 @@
     "es2020": true
   },
   "extends": [
+    "next/core-web-vitals",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
-    "next/core-web-vitals",
-    "standard",
-    "prettier"
+    "prettier",
+    "standard"
   ],
   "ignorePatterns": ["dist", ".eslintrc.cjs"],
   "parser": "@typescript-eslint/parser",
   "plugins": ["react-refresh"],
   "rules": {
-    "react-refresh/only-export-components": [
-      "warn",
-      { "allowConstantExport": true }
-    ],
     "no-unused-vars": "error",
     "semi": ["warn", "never"],
-    "no-eval": "off",
     "no-undef": "off"
   }
 }
