@@ -19,7 +19,8 @@ export default async function Hero() {
     <section className='mb-28 mt-10 flex flex-col'>
       <div className='absolute left-0 top-0 -z-10 h-2/5 w-screen'>
         <Image
-          src={imagesPath(movie.backdrop_path, '1920x800')}
+          priority
+          src={imagesPath(movie.backdropPath, '1920x800')}
           fill
           alt={`${movie.title} poster image`}
           className='mask-image-bg object-cover object-top opacity-25'
