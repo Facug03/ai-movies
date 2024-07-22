@@ -1,15 +1,15 @@
 export interface Movie {
   id: number
-  backdrop_path: string
+  backdropPath: string
   originalLanguage: string
   originalTitle: string
   overview: string
   popularity: number
-  poster_path: string | null
-  release_date: string | null
+  posterPath: string | null
+  releaseDate: string | null
   title: string
-  vote_average: number
-  vote_count: number
+  voteAverage: number
+  voteCount: number
   type?: 'Movie' | 'Series'
 }
 

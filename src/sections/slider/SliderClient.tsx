@@ -52,9 +52,9 @@ export default function SliderClient({ title, movies }: Props) {
           {movies.map((movie) => (
             <article key={movie.id} className='mr-3 max-w-[9vw]'>
               <div className='relative mb-3 aspect-[2/3] h-auto w-[9vw] rounded-lg'>
-                {movie.poster_path ? (
+                {movie.posterPath ? (
                   <Image
-                    src={imagesPath(movie.poster_path, '220x330')}
+                    src={imagesPath(movie.posterPath, '220x330')}
                     fill
                     alt={`${movie.title} poster`}
                     className='rounded-lg object-contain'
@@ -69,7 +69,7 @@ export default function SliderClient({ title, movies }: Props) {
                 {movie.title}
               </h3>
               <p className='text-t8 text-w-75'>
-                {movie.type} {movie?.release_date && `• ${movie.release_date.split('-')[0]}`}
+                {movie.type} {movie?.releaseDate && `• ${movie.releaseDate.split('-')[0]}`}
               </p>
             </article>
           ))}
