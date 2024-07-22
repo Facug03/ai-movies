@@ -1,11 +1,11 @@
 'use client'
 
-import Image from 'next/image'
 import useEmblaCarousel from 'embla-carousel-react'
+import Image from 'next/image'
 
+import Img from '@/components/icons/Img'
 import { Movie } from '@/types/movie'
 import { imagesPath } from '@/utils/images'
-import Img from '@/components/icons/Img'
 
 interface Props {
   title: string

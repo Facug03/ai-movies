@@ -2,9 +2,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import Button from '@/components/Button'
+import Img from '@/components/icons/Img'
 import { getMovies, getMoviesGenres } from '@/services/getMovies'
 import { imagesPath } from '@/utils/images'
-import Img from '@/components/icons/Img'
 import { slugify } from '@/utils/slugify'
 
 export default async function MoviesGenres({ params: { slug } }: { params: { slug: string } }) {

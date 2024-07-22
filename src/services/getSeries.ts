@@ -1,9 +1,9 @@
 import { Data } from '@/types/apiMovieDb/series'
-import { apis } from './api'
-import { Movie } from '@/types/movie'
-import { applyFilters } from '@/utils/applyFilters'
 import { MovieFilters } from '@/types/filters'
 import { Genres } from '@/types/genres'
+import { Movie } from '@/types/movie'
+import { applyFilters } from '@/utils/applyFilters'
+import { apis } from './api'
 
 export const getSeries = async (
   type: keyof typeof apis.series,

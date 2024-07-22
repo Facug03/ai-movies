@@ -1,9 +1,9 @@
 import Image from 'next/image'
 
-import { getAll } from '@/services/getAll'
-import { imagesPath } from '@/utils/images'
 import SearchForm from '@/components/SearchForm'
 import Img from '@/components/icons/Img'
+import { getAll } from '@/services/getAll'
+import { imagesPath } from '@/utils/images'
 
 export default async function Search() {
   const [error, data] = await getAll('trending')

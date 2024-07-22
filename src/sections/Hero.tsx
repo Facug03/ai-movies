@@ -1,10 +1,10 @@
 import Image from 'next/image'
 
+import Button from '@/components/Button'
+import Ai from '@/components/icons/Ai'
+import Play from '@/components/icons/Play'
 import { getMovies } from '@/services/getMovies'
 import { imagesPath } from '@/utils/images'
-import Button from '@/components/Button'
-import Play from '@/components/icons/Play'
-import Ai from '@/components/icons/Ai'
 
 export default async function Hero() {
   const [error, data] = await getMovies('nowPlaying')

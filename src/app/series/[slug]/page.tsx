@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import Button from '@/components/Button'
+import Img from '@/components/icons/Img'
 import { getSeries, getSeriesGenres } from '@/services/getSeries'
 import { imagesPath } from '@/utils/images'
 import { slugify } from '@/utils/slugify'
-import Button from '@/components/Button'
-import Img from '@/components/icons/Img'
 
 export default async function SeriesGenres({ params: { slug } }: { params: { slug: string } }) {
   const splitSlug = slug.split('-')

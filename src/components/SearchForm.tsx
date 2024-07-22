@@ -1,15 +1,15 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
 import { useDebounce } from '@uidotdev/usehooks'
+import Image from 'next/image'
+import { useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import useSWRInfinite from 'swr/infinite'
-import Image from 'next/image'
 
-import { searchAll } from '@/services/getAll'
 import { apis } from '@/services/api'
-import { imagesPath } from '@/utils/images'
+import { searchAll } from '@/services/getAll'
 import { SearchResults } from '@/types/search'
+import { imagesPath } from '@/utils/images'
 import Img from './icons/Img'
 import Spinner from './icons/Spinner'
 

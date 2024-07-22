@@ -1,7 +1,7 @@
 import { Data } from '@/types/apiMovieDb/all'
 import { Movie } from '@/types/movie'
-import { apis } from './api'
 import { SearchResults } from '@/types/search'
+import { apis } from './api'
 
 export const getAll = async (type: keyof typeof apis.all): Promise<[null, Movie[]] | [Error, null]> => {
   try {
