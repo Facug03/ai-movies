@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { useDebounce } from '@uidotdev/usehooks'
+import { useInView } from 'react-intersection-observer'
 import useSWRInfinite from 'swr/infinite'
 import Image from 'next/image'
 
@@ -10,9 +11,10 @@ import { apis } from '@/services/api'
 import { imagesPath } from '@/utils/images'
 import { SearchResults } from '@/types/search'
 import Img from './icons/Img'
+import Spinner from './icons/Spinner'
 
 export default function SearchForm() {
-  const { data, error, isLoading, query, setQuery, setSize, size, ref } = useSearch()
+  const { data, query, setQuery, refGrid, reachEnd, ref } = useSearch()
 
   return (
     <>
@@ -26,14 +28,14 @@ export default function SearchForm() {
         />
       </form>
 
-      <div className='hide-element flex flex-wrap gap-4 transition-opacity' ref={ref}>
+      <div className='hide-element flex flex-wrap gap-4' ref={refGrid}>
         {data?.map((movies) => {
           return movies?.data.map((movie) => (
             <article key={movie.id} className='max-w-[9vw] animate-fade-in'>
               <div className='relative mb-3 aspect-[2/3] h-auto w-[9vw] rounded-lg'>
-                {movie.poster_path ? (
+                {movie.posterPath ? (
                   <Image
-                    src={imagesPath(movie.poster_path, '220x330')}
+                    src={imagesPath(movie.posterPath, '220x330')}
                     fill
                     alt={`${movie.title} poster`}
                     className='rounded-lg object-contain'
@@ -49,11 +51,17 @@ export default function SearchForm() {
                 {movie.title}
               </h3>
               <p className='text-t8 text-w-75'>
-                {movie.type} {movie?.release_date && `• ${movie.release_date.split('-')[0]}`}
+                {movie.type} {movie?.releaseDate && `• ${movie.releaseDate.split('-')[0]}`}
               </p>
             </article>
           ))
         })}
+
+        {!reachEnd && data?.length && (
+          <div className='flex w-full justify-center py-3' ref={ref}>
+            <Spinner styles='h-10 w-10 animate-spin fill-primary text-gray-200' />
+          </div>
+        )}
       </div>
     </>
   )
@@ -62,22 +70,29 @@ export default function SearchForm() {
 function useSearch() {
   const [query, setQuery] = useState('')
   const debounceQuery = useDebounce(query, 300)
-  const ref = useRef<HTMLDivElement | null>(null)
-  const { data, error, isLoading, size, setSize } = useSWRInfinite(
+  const refGrid = useRef<HTMLDivElement | null>(null)
+  const { data, setSize } = useSWRInfinite(
     (page, previousData: SearchResults) => {
       if (debounceQuery.length === 0) return null
 
       if (previousData && page === previousData?.totalPages) return null
 
-      return `${apis.all.search}&query=${debounceQuery}&page=${page + 1}`
+      return `${apis.all.search}query=${debounceQuery}&page=${page + 1}`
     },
     searchAll,
     {
       errorRetryCount: 1,
       revalidateOnFocus: false,
-      keepPreviousData: true,
+      keepPreviousData: true
     }
   )
+  const { ref, inView } = useInView()
+
+  useEffect(() => {
+    if (inView) {
+      setSize((prev) => prev + 1)
+    }
+  }, [inView, setSize])
 
   useEffect(() => {
     const element = document.getElementById('explore-section')
@@ -85,7 +100,7 @@ function useSearch() {
 
     if (debounceQuery.length === 0) {
       element?.classList.remove(hideClass)
-      ref.current?.classList.add(hideClass)
+      refGrid.current?.classList.add(hideClass)
 
       return
     }
@@ -97,17 +112,17 @@ function useSearch() {
     })
 
     element?.classList.add(hideClass)
-    ref.current?.classList.remove(hideClass)
+    refGrid.current?.classList.remove(hideClass)
   }, [debounceQuery])
 
+  const reachEnd = data && data[data.length - 1]?.page === data[data.length - 1]?.totalPages
+
   return {
+    data,
     query,
     setQuery,
-    data,
-    error,
-    isLoading,
-    size,
-    setSize,
-    ref,
+    refGrid,
+    reachEnd,
+    ref
   }
 }

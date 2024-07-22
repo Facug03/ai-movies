@@ -17,14 +17,14 @@ export default async function Search() {
       <SearchForm />
 
       <section id='explore-section'>
-        <h1 className='mb-2 text-t2 font-bold text-w'>Explore</h1>
+        <h1 className='mb-2 text-t2 font-bold text-w'>Most searched this week</h1>
         <div className='flex flex-wrap gap-4'>
           {data.map((movie) => (
             <article key={movie.id} className='max-w-[9vw]'>
               <div className='relative mb-3 aspect-[2/3] h-auto w-[9vw] rounded-lg'>
-                {movie.poster_path ? (
+                {movie.posterPath ? (
                   <Image
-                    src={imagesPath(movie.poster_path, '220x330')}
+                    src={imagesPath(movie.posterPath, '220x330')}
                     fill
                     alt={`${movie.title} poster`}
                     className='rounded-lg object-contain'
@@ -39,7 +39,7 @@ export default async function Search() {
                 {movie.title}
               </h3>
               <p className='text-t8 text-w-75'>
-                {movie.type} {movie?.release_date && `• ${movie.release_date.split('-')[0]}`}
+                {movie.type} {movie?.releaseDate && `• ${movie.releaseDate.split('-')[0]}`}
               </p>
             </article>
           ))}
