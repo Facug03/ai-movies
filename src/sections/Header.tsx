@@ -16,6 +16,7 @@ export default function Header() {
             <StyledLink href='/search'>Search</StyledLink>
             <StyledLink href='/movies'>Movies</StyledLink>
             <StyledLink href='/series'>Series</StyledLink>
+            <StyledLink href='/animes'>Animes</StyledLink>
           </div>
         </div>
 
@@ -31,10 +32,24 @@ export default function Header() {
 function StyledLink({ href, children }: { href: string; children: React.ReactNode }) {
   const pathname = usePathname()
 
-  const color = pathname === href ? 'text-primary font-bold' : 'text-w'
+  if (pathname === href) {
+    return (
+      <Link href={href} className='text-t7 font-bold text-primary'>
+        {children}
+      </Link>
+    )
+  }
+
+  if (href.slice(1) && pathname.slice(1).startsWith(href.slice(1))) {
+    return (
+      <Link href={href} className='text-t7 font-bold text-primary'>
+        {children}
+      </Link>
+    )
+  }
 
   return (
-    <Link href={href} className={`${color} text-t7`}>
+    <Link href={href} className='text-t7 text-w'>
       {children}
     </Link>
   )
