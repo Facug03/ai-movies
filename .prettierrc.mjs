@@ -10,5 +10,6 @@ export default {
   endOfLine: 'lf',
   arrowParens: 'always',
   jsxSingleQuote: true,
-  plugins: ['prettier-plugin-tailwindcss'],
+  organizeImportsSkipDestructiveCodeActions: true,
+  plugins: ['prettier-plugin-tailwindcss', 'prettier-plugin-organize-imports']
 }
