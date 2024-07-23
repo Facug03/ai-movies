@@ -5,7 +5,7 @@ const config: Config = {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/sections/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/sections/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
     extend: {
@@ -24,7 +24,7 @@ const config: Config = {
         'w-25': 'rgba(243, 243, 237, 0.25)',
         'w-15': 'rgba(243, 243, 237, 0.15)',
         'w-10': 'rgba(243, 243, 237, 0.1)',
-        'w-5': 'rgba(243, 243, 237, 0.05)',
+        'w-5': 'rgba(243, 243, 237, 0.05)'
       },
       fontSize: {
         t1: '42px',
@@ -35,18 +35,31 @@ const config: Config = {
         t6: '16px',
         t7: '14px',
         t8: '12px',
+        'm-t1': '28px',
+        'm-t2': '25px',
+        'm-t3': '22px',
+        'm-t4': '20px',
+        'm-t5': '18px',
+        'm-t6': '16px',
+        'm-t7': '14px',
+        'm-t8': '12px'
       },
       animation: {
         'fade-in': 'fade-in 0.3s ease-in both',
+        'fade-out': 'fade-out 0.6s ease-out both'
       },
       keyframes: {
         'fade-in': {
           '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
+          '100%': { opacity: '1' }
         },
-      },
-    },
+        'fade-out': {
+          '0%': { opacity: '1' },
+          '100%': { opacity: '0' }
+        }
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 }
 export default config
