@@ -1,9 +1,9 @@
 import { Data } from '@/types/apiMovieDb/all'
-import { Movie } from '@/types/movie'
+import { Media } from '@/types/media'
 import { SearchResults } from '@/types/search'
 import { apis } from './api'
 
-export const getAll = async (type: keyof typeof apis.all): Promise<[null, Movie[]] | [Error, null]> => {
+export const getAll = async (type: keyof typeof apis.all): Promise<[null, Media[]] | [Error, null]> => {
   try {
     const response = await fetch(apis.all[type], {
       method: 'GET',
@@ -19,20 +19,20 @@ export const getAll = async (type: keyof typeof apis.all): Promise<[null, Movie[
     }
 
     const data = (await response.json()) as Data
-    const formatData: Movie[] = data.results.map((movie) => {
+    const formatData: Media[] = data.results.map((media) => {
       return {
-        backdropPath: movie.backdrop_path,
-        id: movie.id,
-        originalLanguage: movie.original_language,
-        originalTitle: movie.original_title ? movie.original_title : movie.original_name ?? '',
-        overview: movie.overview,
-        popularity: movie.popularity,
-        posterPath: movie.poster_path,
-        releaseDate: movie.release_date ? movie.release_date : movie.first_air_date ?? '',
-        title: movie.title ? movie.title : movie.name ?? '',
-        voteAverage: movie.vote_average,
-        voteCount: movie.vote_count,
-        type: movie.media_type === 'tv' ? 'Series' : 'Movie'
+        backdropPath: media.backdrop_path,
+        id: media.id,
+        originalLanguage: media.original_language,
+        originalTitle: media.original_title ? media.original_title : media.original_name ?? '',
+        overview: media.overview,
+        popularity: media.popularity,
+        posterPath: media.poster_path,
+        releaseDate: media.release_date ? media.release_date : media.first_air_date ?? '',
+        title: media.title ? media.title : media.name ?? '',
+        voteAverage: media.vote_average,
+        voteCount: media.vote_count,
+        type: media.media_type === 'tv' ? 'Series' : 'Movie'
       }
     })
 
@@ -61,7 +61,7 @@ export const searchAll = async (url: string): Promise<SearchResults> => {
   }
 
   const data = (await response.json()) as Data
-  const formatData: Movie[] = data.results
+  const formatData: Media[] = data.results
     .filter((movie) => movie.media_type !== 'person')
     .map((movie) => {
       return {

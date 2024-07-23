@@ -1,14 +1,14 @@
 import { Data } from '@/types/apiMovieDb/series'
 import { MovieFilters } from '@/types/filters'
 import { Genres } from '@/types/genres'
-import { Movie } from '@/types/movie'
+import { Media } from '@/types/media'
 import { applyFilters } from '@/utils/applyFilters'
 import { apis } from './api'
 
 export const getSeries = async (
   type: keyof typeof apis.series,
   filters?: MovieFilters
-): Promise<[null, Movie[]] | [Error, null]> => {
+): Promise<[null, Media[]] | [Error, null]> => {
   try {
     const defaultFilters = {
       page: 1,
@@ -31,19 +31,19 @@ export const getSeries = async (
     }
 
     const data = (await response.json()) as Data
-    const formatData: Movie[] = data.results.map((movie) => {
+    const formatData: Media[] = data.results.map((media) => {
       return {
-        backdropPath: movie.backdrop_path,
-        id: movie.id,
-        originalLanguage: movie.original_language,
-        originalTitle: movie.original_name,
-        overview: movie.overview,
-        popularity: movie.popularity,
-        posterPath: movie.poster_path,
-        releaseDate: movie.first_air_date,
-        title: movie.name,
-        voteAverage: movie.vote_average,
-        voteCount: movie.vote_count,
+        backdropPath: media.backdrop_path,
+        id: media.id,
+        originalLanguage: media.original_language,
+        originalTitle: media.original_name,
+        overview: media.overview,
+        popularity: media.popularity,
+        posterPath: media.poster_path,
+        releaseDate: media.first_air_date,
+        title: media.name,
+        voteAverage: media.vote_average,
+        voteCount: media.vote_count,
         type: 'Series'
       }
     })

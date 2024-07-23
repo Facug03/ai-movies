@@ -1,5 +1,5 @@
 import { apis } from '@/services/api'
-import { MoviesSections, SeriesSections } from '@/types/movie'
+import { MoviesSections, SeriesSections } from '@/types/media'
 
 export const moviesSection: Record<MoviesSections, keyof typeof apis.movies> = {
   'In theathers': 'nowPlaying',

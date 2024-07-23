@@ -1,4 +1,4 @@
-export interface Movie {
+export interface Media {
   id: number
   backdropPath: string
   originalLanguage: string

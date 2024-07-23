@@ -1,8 +1,8 @@
-import { Movie } from './movie'
+import { Media } from './media'
 
 export interface SearchResults {
   page: number
-  data: Movie[]
+  data: Media[]
   totalPages: number
   totalResults: number
 }
