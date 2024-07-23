@@ -1,7 +1,6 @@
 'use client'
 
 import { useDebounce } from '@uidotdev/usehooks'
-import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import useSWRInfinite from 'swr/infinite'
@@ -9,9 +8,8 @@ import useSWRInfinite from 'swr/infinite'
 import { apis } from '@/services/api'
 import { searchAll } from '@/services/getAll'
 import { SearchResults } from '@/types/search'
-import { imagesPath } from '@/utils/images'
-import Img from './icons/Img'
 import Spinner from './icons/Spinner'
+import MediaGrid from './MediaGrid'
 
 export default function SearchForm() {
   const { data, query, setQuery, refGrid, reachEnd, ref } = useSearch()
@@ -22,40 +20,14 @@ export default function SearchForm() {
         <input
           placeholder='Search movies, series, anime or cartoons'
           type='text'
-          className='w-full rounded-lg bg-w-25 px-2 py-3 text-t2 font-bold text-w-75 outline-none'
+          className='w-full rounded-lg bg-w-25 px-2 py-3 text-m-t2 font-bold text-w-75 outline-none sm:text-t2'
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
       </form>
 
-      <div className='hide-element flex flex-wrap gap-4' ref={refGrid}>
-        {data?.map((movies) => {
-          return movies?.data.map((movie) => (
-            <article key={movie.id} className='max-w-[9vw] animate-fade-in'>
-              <div className='relative mb-3 aspect-[2/3] h-auto w-[9vw] rounded-lg'>
-                {movie.posterPath ? (
-                  <Image
-                    src={imagesPath(movie.posterPath, '220x330')}
-                    fill
-                    alt={`${movie.title} poster`}
-                    className='rounded-lg object-contain'
-                    unoptimized
-                  />
-                ) : (
-                  <div className='flex h-full w-full items-center justify-center rounded-lg bg-w-50'>
-                    <Img styles='w-10 h-10 fill-b' />
-                  </div>
-                )}
-              </div>
-              <h3 className='overflow-hidden text-ellipsis whitespace-nowrap text-t7 font-bold text-w'>
-                {movie.title}
-              </h3>
-              <p className='text-t8 text-w-75'>
-                {movie.type} {movie?.releaseDate && `• ${movie.releaseDate.split('-')[0]}`}
-              </p>
-            </article>
-          ))
-        })}
+      <div className='hide-element' ref={refGrid}>
+        {Boolean(data?.length) && <MediaGrid mediaContent={data?.map((m) => m.data).flat() ?? []} />}
 
         {!reachEnd && data?.length && (
           <div className='flex w-full justify-center py-3' ref={ref}>
