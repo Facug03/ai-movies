@@ -12,8 +12,8 @@ export const applyFilters = (url: string, filters: MovieFilters) => {
     else url = url + `&language=${language}`
   }
   if (genres && genres.length > 0) {
-    if (url.includes('with_genres=')) url = url.replace(/with_genres=\d+/, `with_genres=${genres.join('|')}`)
-    else url = url + `&with_genres=${genres.join('|')}`
+    if (url.includes('with_genres=')) url = url.replace(/with_genres=\d+/, `with_genres=${genres.join(',')}`)
+    else url = url + `&with_genres=${genres.join(',')}`
   }
 
   console.log(url)
