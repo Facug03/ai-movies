@@ -1,48 +1,55 @@
 'use client'
 
 import useEmblaCarousel from 'embla-carousel-react'
-import Image from 'next/image'
 
-import Img from '@/components/icons/Img'
-import { Movie } from '@/types/movie'
-import { imagesPath } from '@/utils/images'
+import LeftArrow from '@/components/icons/LeftArrow'
+import MediaItem from '@/components/MediaItem'
+import { Media } from '@/types/media'
 
 interface Props {
   title: string
-  movies: Movie[]
+  movies: Media[]
 }
 
 export default function SliderClient({ title, movies }: Props) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: true,
+    loop: false,
     slidesToScroll: 'auto',
     dragFree: true,
     duration: 35,
     align: 'start',
-    watchDrag: false
+    watchDrag: true,
+    breakpoints: {
+      '(min-width: 768px)': {
+        watchDrag: false,
+        loop: true
+      }
+    }
   })
 
   return (
     <section className='mb-7 flex flex-col gap-3'>
       <div className='flex items-center justify-between'>
-        <h2 className='text-t3 font-bold text-w'>{title}</h2>
+        <h2 className='text-m-t3 font-bold text-w sm:text-t3'>{title}</h2>
 
-        <nav className='flex gap-6'>
+        <nav className='hidden md:flex md:gap-4'>
           <button
             onClick={() => {
               if (emblaApi) emblaApi.scrollPrev()
             }}
-            className='text-t3 font-bold text-primary'
+            className='font-bold text-primary'
+            aria-label='Previous'
           >
-            {'<'}
+            <LeftArrow styles='w-9 h-9 stroke-primary' />
           </button>
           <button
             onClick={() => {
               if (emblaApi) emblaApi.scrollNext()
             }}
-            className='text-t3 font-bold text-primary'
+            className='font-bold text-primary'
+            aria-label='Next'
           >
-            {'>'}
+            <LeftArrow styles='w-9 h-9 stroke-primary rotate-180' />
           </button>
         </nav>
       </div>
@@ -50,28 +57,7 @@ export default function SliderClient({ title, movies }: Props) {
       <div className='overflow-hidden' ref={emblaRef}>
         <div className='flex'>
           {movies.map((movie) => (
-            <article key={movie.id} className='mr-3 max-w-[9vw]'>
-              <div className='relative mb-3 aspect-[2/3] h-auto w-[9vw] rounded-lg'>
-                {movie.posterPath ? (
-                  <Image
-                    src={imagesPath(movie.posterPath, '220x330')}
-                    fill
-                    alt={`${movie.title} poster`}
-                    className='rounded-lg object-contain'
-                  />
-                ) : (
-                  <div className='flex h-full w-full items-center justify-center rounded-lg bg-w-50'>
-                    <Img styles='w-10 h-10 fill-b' />
-                  </div>
-                )}
-              </div>
-              <h3 className='overflow-hidden text-ellipsis whitespace-nowrap text-t7 font-bold text-w'>
-                {movie.title}
-              </h3>
-              <p className='text-t8 text-w-75'>
-                {movie.type} {movie?.releaseDate && `• ${movie.releaseDate.split('-')[0]}`}
-              </p>
-            </article>
+            <MediaItem key={movie.id} media={movie} type='slider' />
           ))}
         </div>
       </div>
