@@ -18,7 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${schibstedGrotesk.className} flex flex-col items-center bg-b`}>
+      <body
+        className={`${schibstedGrotesk.className} flex flex-col items-center overflow-x-hidden bg-b px-[6px] sm:px-2 lg:px-3`}
+      >
         <Header />
         <main className='w-full max-w-[1380px]'>{children}</main>
       </body>
