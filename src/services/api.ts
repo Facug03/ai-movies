@@ -6,7 +6,8 @@ export const apis = {
     popular: `${baseUrl}/discover/movie?sort_by=popularity.desc`,
     topRated: `${baseUrl}/movie/top_rated?`,
     upcoming: `${baseUrl}/movie/upcoming?`,
-    genres: `${baseUrl}/genre/movie/list?language=en`
+    genres: `${baseUrl}/genre/movie/list?language=en`,
+    anime: `${baseUrl}/discover/movie?include_adult=false&include_null_first_air_dates=false&sort_by=vote_average.desc&vote_count.gte=300&with_genres=16&with_origin_country=JP`
   },
   series: {
     onTheAir: `${baseUrl}/tv/on_the_air?`,
