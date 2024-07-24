@@ -1,5 +1,5 @@
 import MediaPage from '@/components/MediaPage'
-import { getMovies, getMoviesGenres } from '@/services/getMovies'
+import { getMovies, getMoviesGenres } from '@/services/movies'
 
 export default async function Movies() {
   const [errorMovie, dataMovie] = await getMovies('popular')
