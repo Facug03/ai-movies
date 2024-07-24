@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Button from '@/components/Button'
 import Ai from '@/components/icons/Ai'
 import Play from '@/components/icons/Play'
-import { getMovies } from '@/services/getMovies'
+import { getMovies } from '@/services/movies'
 import { imagesPath } from '@/utils/images'
 
 export default async function Hero() {
@@ -17,7 +17,7 @@ export default async function Hero() {
 
   return (
     <section className='relative mb-16 mt-8 flex flex-col sm:mb-28 sm:mt-10'>
-      <div className='absolute -top-20 left-[calc(50%-50vw)] -z-10 h-[calc(100%+48px+32px+64px)] w-screen sm:h-[calc(100%+48px+40px+112px)]'>
+      <div className='absolute -top-20 left-[calc(50%-50vw)] -z-10 h-[calc(100%+48px+32px+64px)] w-screen sm:-top-[88px] sm:h-[calc(100%+48px+40px+112px)]'>
         <Image
           priority
           src={imagesPath(movie.backdropPath, '1920x800')}
