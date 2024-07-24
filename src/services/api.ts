@@ -7,14 +7,14 @@ export const apis = {
     topRated: `${baseUrl}/movie/top_rated?`,
     upcoming: `${baseUrl}/movie/upcoming?`,
     genres: `${baseUrl}/genre/movie/list?language=en`,
-    anime: `${baseUrl}/discover/movie?include_adult=false&include_null_first_air_dates=false&sort_by=vote_average.desc&vote_count.gte=300&with_genres=16&with_origin_country=JP`
+    anime: `${baseUrl}/discover/movie?include_adult=false&include_null_first_air_dates=false&sort_by=vote_average.desc&vote_count.gte=300&with_origin_country=JP&with_genres=16`
   },
   series: {
     onTheAir: `${baseUrl}/tv/on_the_air?`,
     popular: `${baseUrl}/discover/tv?sort_by=popularity.desc`,
     topRated: `${baseUrl}/tv/top_rated?`,
     upcoming: `${baseUrl}/tv/upcoming?`,
-    anime: `${baseUrl}/discover/tv?include_adult=false&include_null_first_air_dates=false&sort_by=vote_average.desc&vote_count.gte=300&with_genres=16&with_origin_country=JP`,
+    anime: `${baseUrl}/discover/tv?include_adult=false&include_null_first_air_dates=false&sort_by=vote_average.desc&vote_count.gte=300&with_origin_country=JP&with_genres=16`,
     genres: `${baseUrl}/genre/tv/list?language=en`
   },
   all: {
