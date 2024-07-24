@@ -16,7 +16,5 @@ export const applyFilters = (url: string, filters: MovieFilters) => {
     else url = url + `&with_genres=${genres.join(',')}`
   }
 
-  console.log(url)
-
   return url
 }
