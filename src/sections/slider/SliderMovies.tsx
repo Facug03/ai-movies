@@ -1,5 +1,5 @@
 import { moviesSection } from '@/consts/sectionsNames'
-import { getMovies } from '@/services/getMovies'
+import { getMovies } from '@/services/movies'
 import SliderClient from './SliderClient'
 
 interface Props {

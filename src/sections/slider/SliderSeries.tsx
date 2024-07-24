@@ -1,5 +1,5 @@
 import { seriesSections } from '@/consts/sectionsNames'
-import { getSeries } from '@/services/getSeries'
+import { getSeries } from '@/services/series'
 import SliderClient from './SliderClient'
 
 interface Props {
