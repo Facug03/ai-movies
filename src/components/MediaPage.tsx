@@ -52,14 +52,14 @@ export default function MediaPage({ genres, mediaContent, title, page, dropdownT
           <div className='mb-2 flex flex-wrap gap-2 sm:mb-4'>
             <Link
               href='/animes/series'
-              className={`${page === 'animes/series' ? 'bg-primary text-b' : 'border-[1px] border-w-75 text-w-75'} hidden w-fit items-center justify-between gap-3 rounded-lg px-4 py-1 text-t6 font-bold sm:flex`}
+              className={`${page === 'animes/series' ? 'bg-primary text-b' : 'border-[1px] border-w-75 text-w-75 hover:border-primary hover:bg-primary hover:text-b'} hidden w-fit items-center justify-between gap-3 rounded-lg px-4 py-1 text-t6 font-bold sm:flex`}
             >
               Series
             </Link>
 
             <Link
               href='/animes/movies'
-              className={`${page === 'animes/movies' ? 'bg-primary text-b' : 'border-[1px] border-w-75 text-w-75'} hidden w-fit items-center justify-between gap-3 rounded-lg px-4 py-1 text-t6 font-bold sm:flex`}
+              className={`${page === 'animes/movies' ? 'bg-primary text-b' : 'border-[1px] border-w-75 text-w-75 hover:border-primary hover:bg-primary hover:text-b'} hidden w-fit items-center justify-between gap-3 rounded-lg px-4 py-1 text-t6 font-bold sm:flex`}
             >
               Movies
             </Link>
@@ -97,10 +97,10 @@ export default function MediaPage({ genres, mediaContent, title, page, dropdownT
           </div>
         )}
 
-        <div className='flex flex-wrap gap-2'>
+        <div className='group flex flex-wrap gap-2'>
           <Link
             href={`/${page}`}
-            className={`${dropdownTitle === 'All' ? 'bg-primary text-b' : 'border-[1px] border-w-75 text-w-75'} hidden w-fit items-center justify-between gap-3 rounded-lg px-4 py-1 text-t6 font-bold sm:flex`}
+            className={`${dropdownTitle === 'All' ? 'bg-primary text-b' : 'border-[1px] border-w-75 text-w-75 transition-colors hover:border-primary hover:bg-primary hover:text-b'} hidden w-fit items-center justify-between gap-3 rounded-lg px-4 py-1 text-t6 font-bold sm:flex`}
           >
             All
           </Link>
@@ -109,7 +109,7 @@ export default function MediaPage({ genres, mediaContent, title, page, dropdownT
             <Link
               key={genre.id}
               href={`/${page}/${slugify(genre.name)}-${genre.id}`}
-              className={`${dropdownTitle === genre.name ? 'bg-primary text-b' : 'border-[1px] border-w-75 text-w-75'} hidden w-fit items-center justify-between gap-3 rounded-lg px-4 py-1 text-t6 font-bold sm:flex`}
+              className={`${dropdownTitle === genre.name ? 'bg-primary text-b' : 'border-[1px] border-w-75 text-w-75 transition-colors hover:border-primary hover:bg-primary hover:text-b'} hidden w-fit items-center justify-between gap-3 rounded-lg px-4 py-1 text-t6 font-bold sm:flex`}
             >
               {genre.name}
             </Link>
@@ -121,7 +121,18 @@ export default function MediaPage({ genres, mediaContent, title, page, dropdownT
         </div>
       </nav>
 
-      <MediaGrid mediaContent={mediaContent} />
+      {mediaContent.length > 0 ? (
+        <MediaGrid mediaContent={mediaContent} />
+      ) : (
+        <div>
+          <h3 className='text-center text-m-t3 font-bold text-w-75 sm:mt-10 sm:text-t3'>
+            No {title.toLowerCase()} found for this genre
+          </h3>
+          <p className='text-center text-m-t6 text-w-75 sm:text-t6'>
+            Try using our AI assistant to find your favorite {title.toLowerCase()}
+          </p>
+        </div>
+      )}
     </>
   )
 }

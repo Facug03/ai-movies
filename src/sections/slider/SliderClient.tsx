@@ -37,19 +37,19 @@ export default function SliderClient({ title, movies }: Props) {
             onClick={() => {
               if (emblaApi) emblaApi.scrollPrev()
             }}
-            className='font-bold text-primary'
+            className='font-bold'
             aria-label='Previous'
           >
-            <LeftArrow styles='w-9 h-9 stroke-primary' />
+            <LeftArrow styles='w-9 h-9 stroke-primary hover:opacity-80' />
           </button>
           <button
             onClick={() => {
               if (emblaApi) emblaApi.scrollNext()
             }}
-            className='font-bold text-primary'
+            className='font-bold'
             aria-label='Next'
           >
-            <LeftArrow styles='w-9 h-9 stroke-primary rotate-180' />
+            <LeftArrow styles='w-9 h-9 stroke-primary rotate-180 hover:opacity-80' />
           </button>
         </nav>
       </div>

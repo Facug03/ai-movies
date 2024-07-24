@@ -13,7 +13,7 @@ interface Props {
 export default function MediaItem({ media, type, animate }: Props) {
   if (type === 'grid') {
     return (
-      <article className={`${animate ? 'animate-fade-in' : ''}`}>
+      <article className={`${animate ? 'animate-fade-in' : ''} group`}>
         <div className='relative mb-3 aspect-[2/3] h-auto w-[27vw] rounded-lg sm:w-[22vw] md:w-[18vw] lg:w-[14vw] xl:w-full'>
           {media.posterPath ? (
             <Image
@@ -28,8 +28,10 @@ export default function MediaItem({ media, type, animate }: Props) {
             </div>
           )}
         </div>
-        <h3 className='overflow-hidden text-ellipsis whitespace-nowrap text-t7 font-bold text-w'>{media.title}</h3>
-        <p className='text-t8 text-w-75'>
+        <h3 className='overflow-hidden text-ellipsis whitespace-nowrap text-m-t7 font-bold text-w transition-colors group-hover:text-primary sm:text-t7'>
+          {media.title}
+        </h3>
+        <p className='text-m-t8 text-w-75 transition-colors group-hover:text-w sm:text-t8'>
           {media.type} {media?.releaseDate && `• ${media.releaseDate.split('-')[0]}`}
         </p>
       </article>
@@ -37,7 +39,7 @@ export default function MediaItem({ media, type, animate }: Props) {
   }
 
   return (
-    <article className='mr-3 max-w-[27vw] sm:max-w-[22vw] md:max-w-[16vw] lg:max-w-[12vw] xl:min-w-[12%]'>
+    <article className='group mr-3 max-w-[27vw] sm:max-w-[22vw] md:max-w-[16vw] lg:max-w-[12vw] xl:min-w-[12%]'>
       <div className='relative mb-3 aspect-[2/3] h-auto w-[27vw] rounded-lg sm:w-[22vw] md:w-[16vw] lg:w-[12vw] xl:w-full'>
         {media.posterPath ? (
           <Image
@@ -52,8 +54,10 @@ export default function MediaItem({ media, type, animate }: Props) {
           </div>
         )}
       </div>
-      <h3 className='overflow-hidden text-ellipsis whitespace-nowrap text-t7 font-bold text-w'>{media.title}</h3>
-      <p className='text-t8 text-w-75'>
+      <h3 className='overflow-hidden text-ellipsis whitespace-nowrap text-t7 font-bold text-w transition-colors group-hover:text-primary'>
+        {media.title}
+      </h3>
+      <p className='text-m-t8 text-w-75 transition-colors group-hover:text-w sm:text-t8'>
         {media.type} {media?.releaseDate && `• ${media.releaseDate.split('-')[0]}`}
       </p>
     </article>

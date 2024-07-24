@@ -35,8 +35,11 @@ export default function Header() {
     <header className='w-full max-w-[1380px] py-3'>
       <nav className='flex items-center justify-between'>
         <div className='flex gap-[76px]'>
-          <Link href='/' className='text-m-t6 font-bold text-w sm:text-t6'>
-            <span className='text-primary'>AI</span>MOVIES
+          <Link
+            href='/'
+            className='group text-m-t6 font-bold text-w transition-colors duration-300 ease-in hover:text-primary sm:text-t6'
+          >
+            <span className='text-primary transition-colors duration-300 ease-out group-hover:text-w'>AI</span>MOVIES
           </Link>
 
           <div className='hidden md:flex md:gap-8'>
@@ -108,7 +111,11 @@ function StyledLink({ href, children, onClick }: { href: string; children: React
   }
 
   return (
-    <Link href={href} className='text-m-t5 text-w md:text-t7' onClick={onClick}>
+    <Link
+      href={href}
+      className='text-m-t5 text-w transition-colors duration-200 ease-in hover:text-primary md:text-t7'
+      onClick={onClick}
+    >
       {children}
     </Link>
   )
