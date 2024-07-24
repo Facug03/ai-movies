@@ -1,6 +1,6 @@
 import MediaGrid from '@/components/MediaGrid'
 import SearchForm from '@/components/SearchForm'
-import { getAll } from '@/services/getAll'
+import { getAll } from '@/services/all'
 
 export default async function Search() {
   const [error, data] = await getAll('trending')

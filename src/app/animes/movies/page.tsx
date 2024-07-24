@@ -1,7 +1,7 @@
 import MediaPage from '@/components/MediaPage'
-import { getMovies, getMoviesGenres } from '@/services/getMovies'
+import { getMovies, getMoviesGenres } from '@/services/movies'
 
-export default async function Animes() {
+export default async function AnimesSeries() {
   const [errorMovie, dataAnime] = await getMovies('anime')
   const [errorGenre, dataGenre] = await getMoviesGenres()
 

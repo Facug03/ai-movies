@@ -1,8 +1,8 @@
 import MediaPage from '@/components/MediaPage'
-import { getMovies, getMoviesGenres } from '@/services/getMovies'
+import { getMovies, getMoviesGenres } from '@/services/movies'
 import { slugify } from '@/utils/slugify'
 
-export default async function AnimesGenres({ params: { slug } }: { params: { slug: string } }) {
+export default async function AnimesMoviesGenres({ params: { slug } }: { params: { slug: string } }) {
   const splitSlug = slug.split('-')
   const [errorMovie, dataMovie] = await getMovies('anime', {
     page: 1,
@@ -26,7 +26,7 @@ export default async function AnimesGenres({ params: { slug } }: { params: { slu
   )
 }
 
-export const dinamicParams = false
+export const dynamicParams = false
 
 export async function generateStaticParams() {
   const [error, data] = await getMoviesGenres()

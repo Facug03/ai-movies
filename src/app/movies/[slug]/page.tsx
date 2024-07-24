@@ -1,5 +1,5 @@
 import MediaPage from '@/components/MediaPage'
-import { getMovies, getMoviesGenres } from '@/services/getMovies'
+import { getMovies, getMoviesGenres } from '@/services/movies'
 import { slugify } from '@/utils/slugify'
 
 export default async function MoviesGenres({ params: { slug } }: { params: { slug: string } }) {
@@ -26,7 +26,7 @@ export default async function MoviesGenres({ params: { slug } }: { params: { slu
   )
 }
 
-export const dinamicParams = false
+export const dynamicParams = false
 
 export async function generateStaticParams() {
   const [error, data] = await getMoviesGenres()

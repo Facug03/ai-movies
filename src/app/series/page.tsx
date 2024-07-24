@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 import MediaPage from '@/components/MediaPage'
-import { getSeries, getSeriesGenres } from '@/services/getSeries'
+import { getSeries, getSeriesGenres } from '@/services/series'
 
 export const metadata: Metadata = {
   title: 'Series - aiMovies',
