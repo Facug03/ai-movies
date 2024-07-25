@@ -1,13 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
-        hostname: 'media.themoviedb.org',
-        protocol: 'https',
-      },
-    ],
-  },
+        hostname: 'image.tmdb.org',
+        protocol: 'https'
+      }
+    ]
+  }
 }
 
 export default nextConfig
