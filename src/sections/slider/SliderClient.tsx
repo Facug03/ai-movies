@@ -18,11 +18,10 @@ export default function SliderClient({ title, movies }: Props) {
     dragFree: true,
     duration: 35,
     align: 'start',
-    watchDrag: true,
     breakpoints: {
       '(min-width: 768px)': {
-        watchDrag: false,
-        loop: true
+        loop: true,
+        dragFree: false
       }
     }
   })
