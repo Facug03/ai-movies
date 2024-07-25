@@ -32,14 +32,14 @@ export default function Header() {
   }
 
   return (
-    <header className='w-full max-w-[1380px] py-3'>
+    <header className='w-full max-w-[86.25rem] py-3'>
       <nav className='flex items-center justify-between'>
         <div className='flex gap-[76px]'>
           <Link
             href='/'
-            className='group text-m-t6 font-bold text-w transition-colors duration-300 ease-in hover:text-primary sm:text-t6'
+            className='duration-400 group text-m-t6 font-bold text-w transition-colors ease-in hover:text-primary sm:text-t6'
           >
-            <span className='text-primary transition-colors duration-300 ease-out group-hover:text-w'>AI</span>MOVIES
+            <span className='duration-400 text-primary transition-colors ease-in group-hover:text-w'>AI</span>MOVIES
           </Link>
 
           <div className='hidden md:flex md:gap-8'>
