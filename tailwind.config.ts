@@ -8,6 +8,13 @@ const config: Config = {
     './src/sections/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
+    screens: {
+      sm: '40rem' /* 640px / 16 */,
+      md: '48rem' /* 768px / 16 */,
+      lg: '64rem' /* 1024px / 16 */,
+      xl: '80rem' /* 1280px / 16 */,
+      '2xl': '96rem' /* 1536px / 16 */
+    },
     extend: {
       colors: {
         primary: 'rgba(233, 225, 38, 1)',
@@ -27,22 +34,22 @@ const config: Config = {
         'w-5': 'rgba(243, 243, 237, 0.05)'
       },
       fontSize: {
-        t1: '42px',
-        t2: '35px',
-        t3: '29px',
-        t4: '24px',
-        t5: '20px',
-        t6: '16px',
-        t7: '14px',
-        t8: '12px',
-        'm-t1': '28px',
-        'm-t2': '25px',
-        'm-t3': '22px',
-        'm-t4': '20px',
-        'm-t5': '18px',
-        'm-t6': '16px',
-        'm-t7': '14px',
-        'm-t8': '12px'
+        t1: '2.625rem',
+        t2: '2.1875rem',
+        t3: '1.8125rem',
+        t4: '1.5rem',
+        t5: '1.25rem',
+        t6: '1rem',
+        t7: '0.875rem',
+        t8: '0.75rem',
+        'm-t1': '1.75rem',
+        'm-t2': '1.5625rem',
+        'm-t3': '1.375rem',
+        'm-t4': '1.25rem',
+        'm-t5': '1.125rem',
+        'm-t6': '1rem',
+        'm-t7': '0.875rem',
+        'm-t8': '0.75rem'
       },
       animation: {
         'fade-in': 'fade-in 0.3s ease-in both',
