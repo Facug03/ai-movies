@@ -20,7 +20,7 @@ export default function MediaItem({ media, type, animate }: Props) {
     return (
       <article className={`${animate ? 'animate-fade-in' : ''} embla-slide`}>
         <Link href={href}>
-          <div className='embla-slide relative mb-3 aspect-[2/3] h-auto w-[27vw] rounded-lg sm:w-[22vw] md:w-[18vw] lg:w-[14vw] xl:w-full'>
+          <div className='relative mb-3 aspect-[2/3] h-auto w-[27vw] rounded-lg sm:w-[22vw] md:w-[18vw] lg:w-[14vw] xl:w-full'>
             {media.posterPath ? (
               <Image
                 src={imagesPath(media.posterPath, '220x330')}
@@ -50,16 +50,16 @@ export default function MediaItem({ media, type, animate }: Props) {
   }
 
   return (
-    <article className='embla-slide mr-3 max-w-[27vw] sm:max-w-[22vw] md:max-w-[16vw] lg:max-w-[12vw] xl:max-w-[12%]'>
+    <article className='embla-slide mr-3 flex-[0_0_27%] sm:flex-[0_0_22%] md:flex-[0_0_16%] lg:flex-[0_0_12%]'>
       <Link href={href}>
-        <div className='relative mb-3 aspect-[2/3] h-auto w-[27vw] rounded-lg sm:w-[22vw] md:w-[16vw] lg:w-[12vw] xl:w-full'>
+        <div className='relative mb-3 aspect-[2/3] h-auto w-full rounded-lg'>
           {media.posterPath ? (
             <Image
               src={imagesPath(media.posterPath, '220x330')}
               fill
               alt={`${media.title} poster`}
               className='rounded-lg object-contain'
-              sizes='(min-width: 1280px) 1380px, (min-width: 1024px) 12vw, (min-width: 768px) 16vw, (min-width: 640px) 22vw, 27vw'
+              sizes='(min-width: 1280px) 12%, (min-width: 1024px) 12%, (min-width: 768px) 16%, (min-width: 640px) 22%, 27%'
             />
           ) : (
             <div className='flex h-full w-full items-center justify-center rounded-lg bg-w-50'>

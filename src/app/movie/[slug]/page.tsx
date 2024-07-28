@@ -87,7 +87,7 @@ export default async function Movie({ params: { slug } }: { params: { slug: stri
             </p>
 
             <div className='flex flex-col gap-3 sm:flex-row'>
-              <Button text='Add to favorites' type='primary' icon={<Heart styles='w-6 h-6 fill-b stroke-b' />} />
+              <Button text='Add to favorites' type='primary' icon={<Heart styles='w-6 h-6 text-b' />} />
               <Button text='More info' type='secondary' icon={<Ai styles='w-7 h-7 fill-b stroke-b' />} />
             </div>
           </div>
@@ -100,38 +100,44 @@ export default async function Movie({ params: { slug } }: { params: { slug: stri
 
           {dataMovie.images.backdrops.length > 0 && <SliderImages images={dataMovie.images} />}
 
-          <SliderClient title='Recomendations' movies={dataMovie.similar} />
+          {dataMovie.similar.length > 0 && <SliderClient title='Recomendations' movies={dataMovie.similar} />}
         </div>
 
         <div className='flex flex-col gap-3'>
           <h2 className='text-m-t3 font-bold text-w sm:text-t3'>Details</h2>
 
-          <div>
-            <h4 className='text-t6 font-bold text-w'>Director</h4>
-            {dataMovie.credits.crew.directors.map((director) => (
-              <p key={director.id} className='text-t7 text-w'>
-                {director.name}
-              </p>
-            ))}
-          </div>
+          {dataMovie.credits.crew.directors.length > 0 && (
+            <div>
+              <h4 className='text-t6 font-bold text-w'>Director</h4>
+              {dataMovie.credits.crew.directors.map((director) => (
+                <p key={director.id} className='text-t7 text-w'>
+                  {director.name}
+                </p>
+              ))}
+            </div>
+          )}
 
-          <div>
-            <h4 className='text-t6 font-bold text-w'>Screenplay</h4>
-            {dataMovie.credits.crew.writers.map((writers) => (
-              <p key={writers.id} className='text-t7 text-w'>
-                {writers.name}
-              </p>
-            ))}
-          </div>
+          {dataMovie.credits.crew.writers.length > 0 && (
+            <div>
+              <h4 className='text-t6 font-bold text-w'>Screenplay</h4>
+              {dataMovie.credits.crew.writers.map((writers) => (
+                <p key={writers.id} className='text-t7 text-w'>
+                  {writers.name}
+                </p>
+              ))}
+            </div>
+          )}
 
-          <div>
-            <h4 className='text-t6 font-bold text-w'>Cast</h4>
-            {dataMovie.credits.cast.map((cast) => (
-              <p key={cast.id} className='text-t7 text-w'>
-                {cast.name}
-              </p>
-            ))}
-          </div>
+          {dataMovie.credits.cast.length > 0 && (
+            <div>
+              <h4 className='text-t6 font-bold text-w'>Cast</h4>
+              {dataMovie.credits.cast.map((cast) => (
+                <p key={cast.id} className='text-t7 text-w'>
+                  {cast.name}
+                </p>
+              ))}
+            </div>
+          )}
 
           {dataMovie?.releaseDate && (
             <div>
@@ -145,26 +151,43 @@ export default async function Movie({ params: { slug } }: { params: { slug: stri
             <p className='text-t7 text-w'>{dataMovie.status}</p>
           </div>
 
-          <div>
-            <h4 className='text-t6 font-bold text-w'>Budget</h4>
-            <p className='text-t7 text-w'>
-              {dataMovie.budget.toLocaleString('en-US', {
-                currency: 'USD',
-                style: 'currency',
-                maximumFractionDigits: 0
-              })}
-            </p>
-          </div>
+          {dataMovie.budget > 0 && (
+            <div>
+              <h4 className='text-t6 font-bold text-w'>Budget</h4>
+              <p className='text-t7 text-w'>
+                {dataMovie.budget.toLocaleString('en-US', {
+                  currency: 'USD',
+                  style: 'currency',
+                  maximumFractionDigits: 0
+                })}
+              </p>
+            </div>
+          )}
+
+          {dataMovie.revenue > 0 && (
+            <div>
+              <h4 className='text-t6 font-bold text-w'>Revenue</h4>
+              <p className='text-t7 text-w'>
+                {dataMovie.revenue.toLocaleString('en-US', {
+                  currency: 'USD',
+                  style: 'currency',
+                  maximumFractionDigits: 0
+                })}
+              </p>
+            </div>
+          )}
 
           <div>
             <h4 className='text-t6 font-bold text-w'>Origin country</h4>
             <p className='text-t7 text-w'>{dataMovie.originCountry}</p>
           </div>
 
-          <div>
-            <h4 className='text-t6 font-bold text-w'>Vote count</h4>
-            <p className='text-t7 text-w'>{dataMovie.voteCount}</p>
-          </div>
+          {dataMovie.voteCount > 0 && (
+            <div>
+              <h4 className='text-t6 font-bold text-w'>Vote count</h4>
+              <p className='text-t7 text-w'>{dataMovie.voteCount}</p>
+            </div>
+          )}
         </div>
       </div>
     </>
