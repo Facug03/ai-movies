@@ -8,13 +8,13 @@ export interface MediaDetail extends Media {
   revenue: number
   runtime: number
   status: string
-  videos: Videos[]
+  videos: Video[]
   images: Images
   similar: Media[]
   credits: Credits
 }
 
-export interface Videos {
+export interface Video {
   iso_639_1: string
   iso_3166_1: string
   name: string
