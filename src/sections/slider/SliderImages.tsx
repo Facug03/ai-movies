@@ -15,14 +15,13 @@ interface Props {
 }
 
 export default function SliderImages({ images }: Props) {
-  const [isOpen, setIsOpen] = useState(false)
+  const [slideIndex, setSlideIndex] = useState<number | null>(null)
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
     slidesToScroll: 'auto',
     dragFree: true,
-    duration: 35,
+    duration: 22.5,
     align: 'start',
-    watchDrag: true,
     breakpoints: {
       '(min-width: 768px)': {
         watchDrag: false,
@@ -34,12 +33,12 @@ export default function SliderImages({ images }: Props) {
 
   return (
     <section className='mb-7 flex flex-col gap-3'>
-      {isOpen && (
-        <SliderScreen onClose={() => setIsOpen(false)}>
+      {slideIndex && (
+        <SliderScreen onClose={() => setSlideIndex(null)} startIndex={slideIndex - 1}>
           {images.backdrops.map((image) => (
             <div
               key={image.filePath}
-              className={`${images.backdrops.length > 1 ? 'mr-[calc(100vw-95vw)] sm:mr-[calc(100vw-40vw)]' : 'ml-[calc(100vw-97.5vw)]'} embla-slide relative aspect-[16/9] h-auto w-[95vw] max-w-[95vw] sm:w-[60vw] sm:max-w-[60vw]`}
+              className={`${images.backdrops.length > 1 ? 'mx-[calc(100vw-97.5vw)] sm:mx-[calc(100vw-20vw)]' : 'ml-[calc(100vw-97.5vw)]'} embla-slide relative aspect-[16/9] h-auto w-[95vw] max-w-[95vw] sm:w-[60vw] sm:max-w-[60vw]`}
             >
               <Image
                 src={imagesPath(image.filePath, 1280)}
@@ -82,12 +81,12 @@ export default function SliderImages({ images }: Props) {
       </div>
 
       <div className='overflow-hidden' ref={emblaRef}>
-        <div className='flex gap-2'>
-          {images.backdrops.map((image) => (
+        <div className='flex'>
+          {images.backdrops.map((image, index) => (
             <div
               key={image.filePath}
-              className='relative aspect-video h-auto min-w-[70%] max-w-[70%] cursor-pointer sm:min-w-[40%] sm:max-w-[40%] lg:min-w-[28%] lg:max-w-[28%]'
-              onClick={() => setIsOpen(true)}
+              className='relative mr-2 aspect-video h-auto flex-[0_0_70%] cursor-pointer sm:flex-[0_0_40%] lg:flex-[0_0_28%]'
+              onClick={() => setSlideIndex(index + 1)}
             >
               <Image
                 src={imagesPath(image.filePath, '533x300')}

@@ -16,12 +16,13 @@ export default function SliderClient({ title, movies }: Props) {
     loop: false,
     slidesToScroll: 'auto',
     dragFree: true,
-    duration: 35,
     align: 'start',
+    duration: 22.5,
     breakpoints: {
       '(min-width: 768px)': {
         loop: true,
-        dragFree: false
+        dragFree: false,
+        watchDrag: false
       }
     }
   })

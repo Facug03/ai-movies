@@ -9,11 +9,14 @@ import { useCanSlideScroll } from '@/hooks/useCanSlideScroll'
 
 interface Props extends PropsWithChildren {
   onClose: () => void
+  startIndex: number | null
 }
 
-export default function SliderScreen({ children, onClose }: Props) {
+export default function SliderScreen({ children, onClose, startIndex }: Props) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
+    startIndex: startIndex ?? 0,
     loop: true,
+    duration: 22.5,
     slidesToScroll: 1,
     align: 'center'
   })
