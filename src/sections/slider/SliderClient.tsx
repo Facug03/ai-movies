@@ -2,8 +2,8 @@
 
 import useEmblaCarousel from 'embla-carousel-react'
 
-import LeftArrow from '@/components/icons/LeftArrow'
 import MediaItem from '@/components/MediaItem'
+import SliderNav from '@/components/SliderNav'
 import { Media } from '@/types/media'
 
 interface Props {
@@ -32,26 +32,7 @@ export default function SliderClient({ title, movies }: Props) {
       <div className='flex items-center justify-between'>
         <h2 className='text-m-t3 font-bold text-w sm:text-t3'>{title}</h2>
 
-        <nav className='hidden md:flex md:gap-4'>
-          <button
-            onClick={() => {
-              if (emblaApi) emblaApi.scrollPrev()
-            }}
-            className='font-bold'
-            aria-label='Previous'
-          >
-            <LeftArrow styles='w-9 h-9 stroke-primary hover:opacity-80' />
-          </button>
-          <button
-            onClick={() => {
-              if (emblaApi) emblaApi.scrollNext()
-            }}
-            className='font-bold'
-            aria-label='Next'
-          >
-            <LeftArrow styles='w-9 h-9 stroke-primary rotate-180 hover:opacity-80' />
-          </button>
-        </nav>
+        <SliderNav emblaApi={emblaApi} />
       </div>
 
       <div className='overflow-hidden' ref={emblaRef}>

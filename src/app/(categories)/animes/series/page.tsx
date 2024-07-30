@@ -1,4 +1,4 @@
-import MediaPage from '@/components/MediaPage'
+import MediaPage from '@/app/(categories)/components/MediaPage'
 import { getSeries, getSeriesGenres } from '@/services/series'
 
 export default async function AnimesSeries() {

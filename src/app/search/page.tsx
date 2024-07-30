@@ -1,5 +1,5 @@
+import SearchForm from '@/app/search/sections/SearchForm'
 import MediaGrid from '@/components/MediaGrid'
-import SearchForm from '@/components/SearchForm'
 import { getAll } from '@/services/all'
 
 export default async function Search() {

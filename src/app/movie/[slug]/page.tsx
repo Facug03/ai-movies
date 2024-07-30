@@ -1,5 +1,8 @@
+// import { unstable_cache } from 'next/cache'
 import Image from 'next/image'
 
+import SliderImages from '@/app/movie/sections/SliderImages'
+import SliderVideos from '@/app/movie/sections/SliderVideos'
 import Button from '@/components/Button'
 import Ai from '@/components/icons/Ai'
 import Heart from '@/components/icons/Heart'
@@ -7,14 +10,21 @@ import Img from '@/components/icons/Img'
 import Like from '@/components/icons/Like'
 import Star from '@/components/icons/Star'
 import SliderClient from '@/sections/slider/SliderClient'
-import SliderImages from '@/sections/slider/SliderImages'
-import SliderVideos from '@/sections/slider/SliderVideos'
 import { getMovie } from '@/services/movies'
 import { imagesPath } from '@/utils/images'
 import { numberToHour } from '@/utils/numberToHour'
 
+// const getCachedMovie = unstable_cache(
+//   async (id: number) =>
+//     getMovie(id, {
+//       language: 'en'
+//     }),
+//   ['movie-detail']
+// )
+
 export default async function Movie({ params: { slug } }: { params: { slug: string } }) {
   const splitSlug = slug.split('-')
+  // const [errorMovie, dataMovie] = await getCachedMovie(Number(splitSlug[0]))
   const [errorMovie, dataMovie] = await getMovie(Number(splitSlug[0]), {
     language: 'en'
   })

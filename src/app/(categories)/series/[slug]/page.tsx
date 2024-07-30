@@ -1,15 +1,15 @@
-import MediaPage from '@/components/MediaPage'
-import { getMovies, getMoviesGenres } from '@/services/movies'
+import MediaPage from '@/app/(categories)/components/MediaPage'
+import { getSeries, getSeriesGenres } from '@/services/series'
 import { slugify } from '@/utils/slugify'
 
-export default async function MoviesGenres({ params: { slug } }: { params: { slug: string } }) {
+export default async function SeriesGenres({ params: { slug } }: { params: { slug: string } }) {
   const splitSlug = slug.split('-')
-  const [errorMovie, dataMovie] = await getMovies('popular', {
+  const [errorMovie, dataMovie] = await getSeries('popular', {
     page: 1,
     genres: [Number(splitSlug[splitSlug.length - 1])],
     language: 'en-US'
   })
-  const [errorGenre, dataGenre] = await getMoviesGenres()
+  const [errorGenre, dataGenre] = await getSeriesGenres()
 
   if (errorGenre || errorMovie) {
     return <div>Error</div>
@@ -19,8 +19,8 @@ export default async function MoviesGenres({ params: { slug } }: { params: { slu
     <MediaPage
       genres={dataGenre.genres}
       mediaContent={dataMovie}
-      title='Movies'
-      page='movies'
+      title='Series'
+      page='series'
       dropdownTitle={dataGenre.genres.find((genre) => genre.id === Number(splitSlug[splitSlug.length - 1]))?.name}
     />
   )
@@ -29,7 +29,7 @@ export default async function MoviesGenres({ params: { slug } }: { params: { slu
 export const dynamicParams = false
 
 export async function generateStaticParams() {
-  const [error, data] = await getMoviesGenres()
+  const [error, data] = await getSeriesGenres()
 
   if (error) {
     throw error

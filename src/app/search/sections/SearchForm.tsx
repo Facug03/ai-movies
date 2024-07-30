@@ -5,11 +5,11 @@ import { useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import useSWRInfinite from 'swr/infinite'
 
+import MediaGrid from '@/components/MediaGrid'
+import Spinner from '@/components/icons/Spinner'
 import { searchAll } from '@/services/all'
 import { apis } from '@/services/api'
 import { SearchResults } from '@/types/search'
-import Spinner from './icons/Spinner'
-import MediaGrid from './MediaGrid'
 
 export default function SearchForm() {
   const { data, query, setQuery, refGrid, reachEnd, ref } = useSearch()

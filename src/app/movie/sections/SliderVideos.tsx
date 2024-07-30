@@ -5,14 +5,13 @@ import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { useState } from 'react'
 
-import LeftArrow from '@/components/icons/LeftArrow'
 import Play from '@/components/icons/Play'
+import SliderNav from '@/components/SliderNav'
 import { youtubeThumbnail } from '@/consts/youtubeThumbnail'
-import { useCanSlideScroll } from '@/hooks/useCanSlideScroll'
 import { Video } from '@/types/mediaDetail'
 import SliderScreen from './SliderScreen'
 
-const YTEmbedSlide = dynamic(() => import('./YTEmbedSlide'))
+const YTEmbedSlide = dynamic(() => import('../components/YTEmbedSlide'))
 
 interface Props {
   videos: Video[]
@@ -34,7 +33,6 @@ export default function SliderVideos({ videos }: Props) {
       }
     }
   })
-  const { canScroll } = useCanSlideScroll(emblaApi)
 
   return (
     <section className='mb-7 flex flex-col gap-3'>
@@ -49,31 +47,7 @@ export default function SliderVideos({ videos }: Props) {
       <div className='flex items-center justify-between'>
         <h2 className='text-m-t3 font-bold text-w sm:text-t3'>Videos</h2>
 
-        {(canScroll.scrollPrev || canScroll.scrollNext) && (
-          <nav className='hidden md:flex md:gap-4'>
-            <button
-              onClick={() => {
-                if (emblaApi) emblaApi.scrollPrev()
-              }}
-              className='font-bold enabled:hover:opacity-80 disabled:opacity-50'
-              aria-label='Previous'
-              disabled={!canScroll.scrollPrev}
-            >
-              <LeftArrow styles='w-9 h-9 stroke-primary' />
-            </button>
-
-            <button
-              onClick={() => {
-                if (emblaApi) emblaApi.scrollNext()
-              }}
-              className='font-bold enabled:hover:opacity-80 disabled:opacity-50'
-              aria-label='Next'
-              disabled={!canScroll.scrollNext}
-            >
-              <LeftArrow styles='w-9 h-9 stroke-primary rotate-180' />
-            </button>
-          </nav>
-        )}
+        <SliderNav emblaApi={emblaApi} />
       </div>
 
       <div className='overflow-hidden' ref={emblaRef}>
