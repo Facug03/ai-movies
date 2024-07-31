@@ -18,7 +18,7 @@ export default function MediaItem({ media, type, animate }: Props) {
 
   if (type === 'grid') {
     return (
-      <article className={`${animate ? 'animate-fade-in' : ''} embla-slide`}>
+      <article className={`${animate ? 'animate-fade-in duration-75' : ''}`}>
         <Link href={href}>
           <div className='relative mb-3 aspect-[2/3] h-auto w-[27vw] rounded-lg sm:w-[22vw] md:w-[18vw] lg:w-[14vw] xl:w-full'>
             {media.posterPath ? (
