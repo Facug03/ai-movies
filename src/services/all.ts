@@ -24,7 +24,7 @@ export const getAll = async (type: keyof typeof apis.all): Promise<[null, Media[
         backdropPath: media.backdrop_path,
         id: media.id,
         originalLanguage: media.original_language,
-        originalTitle: media.original_title ? media.original_title : media.original_name ?? '',
+        originalTitle: media?.original_title ? media.original_title : media.original_name ?? '',
         overview: media.overview,
         popularity: media.popularity,
         posterPath: media.poster_path,
