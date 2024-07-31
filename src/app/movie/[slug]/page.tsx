@@ -10,7 +10,7 @@ import Img from '@/components/icons/Img'
 import Like from '@/components/icons/Like'
 import Star from '@/components/icons/Star'
 import SliderClient from '@/sections/slider/SliderClient'
-import { getMovie } from '@/services/movies'
+import { getMovie } from '@/services/series'
 import { imagesPath } from '@/utils/images'
 import { numberToHour } from '@/utils/numberToHour'
 

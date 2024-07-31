@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 
 import SliderNav from '@/components/SliderNav'
-import { Images } from '@/types/mediaDetail'
+import { Images } from '@/types/movieDetail'
 import { imagesPath } from '@/utils/images'
 import SliderScreen from './SliderScreen'
 
