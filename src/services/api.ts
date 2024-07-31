@@ -1,5 +1,7 @@
 export const baseUrl = 'https://api.themoviedb.org/3'
 
+export type ApiResponse<Response> = [null, Response, api: string] | [Error, null]
+
 export const apis = {
   movies: {
     nowPlaying: `${baseUrl}/movie/now_playing?`,
@@ -16,7 +18,8 @@ export const apis = {
     topRated: `${baseUrl}/tv/top_rated?`,
     upcoming: `${baseUrl}/tv/upcoming?`,
     anime: `${baseUrl}/discover/tv?include_adult=false&include_null_first_air_dates=false&sort_by=vote_average.desc&vote_count.gte=300&with_origin_country=JP&with_genres=16`,
-    genres: `${baseUrl}/genre/tv/list?language=en`
+    genres: `${baseUrl}/genre/tv/list?language=en`,
+    detail: `${baseUrl}/tv/`
   },
   all: {
     trending: `${baseUrl}/trending/all/week`,
