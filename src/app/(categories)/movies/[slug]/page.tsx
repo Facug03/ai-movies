@@ -4,10 +4,13 @@ import { slugify } from '@/utils/slugify'
 
 export default async function MoviesGenres({ params: { slug } }: { params: { slug: string } }) {
   const splitSlug = slug.split('-')
-  const [errorMovie, dataMovie] = await getMovies('popular', {
-    page: 1,
-    genres: [Number(splitSlug[splitSlug.length - 1])],
-    language: 'en-US'
+  const [errorMovie, dataMovie, url] = await getMovies({
+    type: 'popular',
+    filters: {
+      page: 1,
+      genres: [Number(splitSlug[splitSlug.length - 1])],
+      language: 'en-US'
+    }
   })
   const [errorGenre, dataGenre] = await getMoviesGenres()
 
@@ -22,6 +25,7 @@ export default async function MoviesGenres({ params: { slug } }: { params: { slu
       title='Movies'
       page='movies'
       dropdownTitle={dataGenre.genres.find((genre) => genre.id === Number(splitSlug[splitSlug.length - 1]))?.name}
+      url={url}
     />
   )
 }

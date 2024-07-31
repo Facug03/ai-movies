@@ -1,10 +1,19 @@
+'use client'
+
 import Link from 'next/link'
+import { useEffect } from 'react'
+import { useInView } from 'react-intersection-observer'
+import useSWRInfinite from 'swr/infinite'
 
 import Dropdown from '@/components/Dropdown'
+import Spinner from '@/components/icons/Spinner'
 import MediaGrid from '@/components/MediaGrid'
 import { Genre } from '@/types/genres'
 import { Media } from '@/types/media'
 import { slugify } from '@/utils/slugify'
+import { getMoviesPaginated } from '../services/movies'
+import { getSeriesPaginated } from '../services/series'
+import { PaginatedResponse } from '../types/paginatedResponse'
 
 interface Props {
   title: string
@@ -12,9 +21,12 @@ interface Props {
   mediaContent: Media[]
   page: string
   dropdownTitle?: string
+  url: string
 }
 
-export default function MediaPage({ genres, mediaContent, title, page, dropdownTitle }: Props) {
+export default function MediaPage({ genres, mediaContent, title, page, dropdownTitle, url }: Props) {
+  const { data, reachEnd, ref } = useInfiniteScroll({ url, page })
+
   const dropdownItems = [
     {
       id: 'all',
@@ -42,6 +54,7 @@ export default function MediaPage({ genres, mediaContent, title, page, dropdownT
       }
     })
   )
+  const media = data?.length ? [...mediaContent, ...data.flatMap((m) => m.results)] : mediaContent
 
   return (
     <>
@@ -121,8 +134,16 @@ export default function MediaPage({ genres, mediaContent, title, page, dropdownT
         </div>
       </nav>
 
-      {mediaContent.length > 0 ? (
-        <MediaGrid mediaContent={mediaContent} />
+      {media.length > 0 ? (
+        <>
+          <MediaGrid key='media-grid' mediaContent={media} animate={true} />
+
+          {!reachEnd && media.length >= 20 && (
+            <div className='flex w-full justify-center py-3' ref={ref}>
+              <Spinner styles='h-10 w-10 animate-spin fill-primary text-gray-200' />
+            </div>
+          )}
+        </>
       ) : (
         <div>
           <h3 className='text-center text-m-t3 font-bold text-w-75 sm:mt-10 sm:text-t3'>
@@ -135,4 +156,52 @@ export default function MediaPage({ genres, mediaContent, title, page, dropdownT
       )}
     </>
   )
+}
+
+function useInfiniteScroll({ url, page }: Pick<Props, 'url' | 'page'>) {
+  const { ref, inView } = useInView()
+  const { data, setSize } = useSWRInfinite(
+    (page, previousData: PaginatedResponse) => {
+      if (!inView) return null
+
+      if (previousData && page + 1 === previousData?.totalPages) return null
+
+      return url.replace(/page=\d+/, `page=${page + 2}`)
+    },
+    (url) => {
+      if (page.includes('movies')) {
+        return getMoviesPaginated(url)
+      }
+
+      return getSeriesPaginated(url)
+    },
+    {
+      errorRetryCount: 1,
+      keepPreviousData: true,
+      revalidateOnFocus: false,
+      revalidateAll: false,
+      revalidateFirstPage: false,
+      parallel: false,
+      dedupingInterval: 10000
+    }
+  )
+
+  useEffect(() => {
+    if (inView) {
+      setSize((prev) => {
+        if (prev === 1 && !data) return 1
+
+        return prev + 1
+      })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView, setSize])
+
+  const reachEnd = data && data[data.length - 1]?.page === data[data.length - 1]?.totalPages
+
+  return {
+    data,
+    reachEnd,
+    ref
+  }
 }

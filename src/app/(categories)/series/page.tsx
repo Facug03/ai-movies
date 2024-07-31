@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Series() {
-  const [errorMovie, dataMovie] = await getSeries('popular')
+  const [errorMovie, dataMovie, url] = await getSeries({ type: 'popular' })
   const [errorGenre, dataGenre] = await getSeriesGenres()
 
   if (errorGenre || errorMovie) {
@@ -17,6 +17,13 @@ export default async function Series() {
   }
 
   return (
-    <MediaPage genres={dataGenre.genres} mediaContent={dataMovie} title='Series' page='series' dropdownTitle='All' />
+    <MediaPage
+      genres={dataGenre.genres}
+      mediaContent={dataMovie}
+      title='Series'
+      page='series'
+      dropdownTitle='All'
+      url={url}
+    />
   )
 }

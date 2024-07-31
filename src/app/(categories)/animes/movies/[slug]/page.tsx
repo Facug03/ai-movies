@@ -4,10 +4,13 @@ import { slugify } from '@/utils/slugify'
 
 export default async function AnimesMoviesGenres({ params: { slug } }: { params: { slug: string } }) {
   const splitSlug = slug.split('-')
-  const [errorMovie, dataMovie] = await getMovies('anime', {
-    page: 1,
-    genres: [16, Number(splitSlug[splitSlug.length - 1])],
-    language: 'en-US'
+  const [errorMovie, dataMovie, url] = await getMovies({
+    type: 'anime',
+    filters: {
+      page: 1,
+      genres: [16, Number(splitSlug[splitSlug.length - 1])],
+      language: 'en-US'
+    }
   })
   const [errorGenre, dataGenre] = await getMoviesGenres()
 
@@ -22,6 +25,7 @@ export default async function AnimesMoviesGenres({ params: { slug } }: { params:
       title='Animes'
       page='animes/movies'
       dropdownTitle={dataGenre.genres.find((genre) => genre.id === Number(splitSlug[splitSlug.length - 1]))?.name}
+      url={url}
     />
   )
 }
