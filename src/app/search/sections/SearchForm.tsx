@@ -55,7 +55,10 @@ function useSearch() {
     {
       errorRetryCount: 1,
       revalidateOnFocus: false,
-      keepPreviousData: true
+      keepPreviousData: true,
+      revalidateAll: false,
+      revalidateFirstPage: false,
+      parallel: false
     }
   )
   const { ref, inView } = useInView()
