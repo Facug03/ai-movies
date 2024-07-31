@@ -7,7 +7,9 @@ import { getMovies } from '@/services/movies'
 import { imagesPath } from '@/utils/images'
 
 export default async function Hero() {
-  const [error, data] = await getMovies('nowPlaying')
+  const [error, data] = await getMovies({
+    type: 'nowPlaying'
+  })
 
   if (error) {
     return <div>Error</div>
@@ -29,7 +31,9 @@ export default async function Hero() {
       </div>
 
       <h1 className='text-m-t1 font-bold text-w sm:text-t1'>{movie.title}</h1>
-      <p className='mb-3 max-w-[50em] text-m-t7 text-w sm:mb-7 sm:text-t7'>{movie.overview}</p>
+      <p className='mb-3 line-clamp-3 max-w-[50em] text-m-t7 text-w sm:mb-7 sm:line-clamp-none sm:text-t7'>
+        {movie.overview}
+      </p>
 
       <div className='flex flex-col gap-3 sm:flex-row sm:gap-6'>
         <Button text='Watch trailer' type='primary' icon={<Play styles='w-5 h-5 fill-b stroke-b' />} />

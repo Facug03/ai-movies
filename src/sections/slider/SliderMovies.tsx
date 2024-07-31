@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default async function Slider({ title }: Props) {
-  const [error, data] = await getMovies(moviesSection[title])
+  const [error, data] = await getMovies({ type: moviesSection[title] })
 
   if (error) {
     return <div>Error</div>
