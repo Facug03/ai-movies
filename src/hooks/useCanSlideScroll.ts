@@ -23,6 +23,7 @@ export function useCanSlideScroll(emblaApi: UseEmblaCarouselType[1]) {
 
     updateCanScrollState(emblaApi)
     emblaApi.on('select', updateCanScrollState)
+    emblaApi.on('reInit', updateCanScrollState)
   }, [emblaApi, updateCanScrollState])
 
   return { canScroll }
