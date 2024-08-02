@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Schibsted_Grotesk } from 'next/font/google'
 
+import ButtonAssistant from '@/components/ButtonAssistant'
 import Header from '@/sections/Header'
 import './globals.css'
 
@@ -23,6 +24,7 @@ export default function RootLayout({
       >
         <Header />
         <main className='w-full max-w-[86.25rem]'>{children}</main>
+        <ButtonAssistant />
       </body>
     </html>
   )
