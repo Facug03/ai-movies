@@ -14,7 +14,7 @@ interface Props {
 }
 
 export default function MediaItem({ media, type, animate }: Props) {
-  const href = `/${media?.type === 'Movie' ? 'movie' : 'series'}/${media.id}${isLatinAlphabet(media.originalTitle) ? `-${slugify(media.originalTitle)}` : ''}`
+  const href = `/${media?.type === 'Movie' ? 'movie' : 'tv'}/${media.id}${isLatinAlphabet(media.originalTitle) ? `-${slugify(media.originalTitle)}` : ''}`
 
   if (type === 'grid') {
     return (
