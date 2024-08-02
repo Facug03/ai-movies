@@ -49,7 +49,8 @@ const config: Config = {
         'm-t5': '1.125rem',
         'm-t6': '1rem',
         'm-t7': '0.875rem',
-        'm-t8': '0.75rem'
+        'm-t8': '0.75rem',
+        tinherit: 'inherit'
       },
       animation: {
         'fade-in': 'fade-in 0.3s ease-in both',
