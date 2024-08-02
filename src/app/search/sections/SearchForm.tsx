@@ -16,7 +16,7 @@ export default function SearchForm() {
 
   return (
     <>
-      <form className='mb-16' role='search'>
+      <form className='mb-16' role='search' onSubmit={(e) => e.preventDefault()}>
         <input
           placeholder='Search movies, series, anime or cartoons'
           type='text'
