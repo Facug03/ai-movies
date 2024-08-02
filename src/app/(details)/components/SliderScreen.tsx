@@ -23,6 +23,14 @@ export default function SliderScreen({ children, onClose, startIndex }: Props) {
   const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi)
   const { canScroll } = useCanSlideScroll(emblaApi)
 
+  useEffect(() => {
+    if (!emblaApi) return
+
+    emblaApi.on('reInit', () => {
+      emblaApi.scrollTo(startIndex ?? 0, true)
+    })
+  }, [emblaApi, startIndex])
+
   return (
     <div className='aling fixed inset-0 z-50 flex h-screen w-screen flex-col justify-center gap-3 overflow-hidden backdrop-brightness-50 sm:flex-row sm:items-center sm:justify-between'>
       <div className='fixed left-6 top-6'>

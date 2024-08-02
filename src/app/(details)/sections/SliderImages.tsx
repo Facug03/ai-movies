@@ -7,7 +7,7 @@ import { useState } from 'react'
 import SliderNav from '@/components/SliderNav'
 import { Images } from '@/types/movieDetail'
 import { imagesPath } from '@/utils/images'
-import SliderScreen from './SliderScreen'
+import SliderScreen from '../components/SliderScreen'
 
 interface Props {
   images: Images

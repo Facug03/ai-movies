@@ -148,7 +148,7 @@ export const getMovie = async (
       }
     }
 
-    return [null, formatData]
+    return [null, formatData, url]
   } catch (error) {
     if (error instanceof Error) {
       return [error, null]

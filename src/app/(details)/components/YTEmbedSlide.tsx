@@ -1,4 +1,4 @@
-import { Video } from '@/types/mediaDetail'
+import { Video } from '@/types/movieDetail'
 import { YouTubeEmbed } from '@next/third-parties/google'
 
 interface Props {

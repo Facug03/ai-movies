@@ -1,12 +1,12 @@
 import { Genre } from './genres'
 import { Media } from './media'
 
-export interface MediaDetail extends Media {
-  budget: number
+export interface SeriesDetail extends Media {
   genres: Genre[]
   originCountry: string[]
-  revenue: number
-  runtime: number
+  lastAirDate: string
+  numberOfEpisodes: number
+  numberOfSeasons: number
   status: string
   videos: Video[]
   images: Images
@@ -54,8 +54,7 @@ export interface Poster {
 export interface Credits {
   cast: Cast[]
   crew: {
-    directors: Crew[]
-    writers: Crew[]
+    creators: Crew[]
   }
 }
 

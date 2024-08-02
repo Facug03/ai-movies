@@ -8,8 +8,8 @@ import { useState } from 'react'
 import Play from '@/components/icons/Play'
 import SliderNav from '@/components/SliderNav'
 import { youtubeThumbnail } from '@/consts/youtubeThumbnail'
-import { Video } from '@/types/mediaDetail'
-import SliderScreen from './SliderScreen'
+import { Video } from '@/types/movieDetail'
+import SliderScreen from '../components/SliderScreen'
 
 const YTEmbedSlide = dynamic(() => import('../components/YTEmbedSlide'))
 
@@ -36,8 +36,8 @@ export default function SliderVideos({ videos }: Props) {
 
   return (
     <section className='mb-7 flex flex-col gap-3'>
-      {slideIndex && (
-        <SliderScreen onClose={() => setSlideIndex(null)} startIndex={slideIndex - 1}>
+      {Boolean(slideIndex) && (
+        <SliderScreen onClose={() => setSlideIndex(null)} startIndex={(slideIndex as number) - 1}>
           {videos.map((video) => (
             <YTEmbedSlide key={video.id} video={video} videos={videos} />
           ))}
