@@ -31,7 +31,7 @@ export const initChatStore = (): ChatState => {
       {
         id: 'default',
         isOpen: false,
-        minimized: false,
+        minimized: true,
         systemPrompt: generateSystemPropmts(),
         title: 'General',
         mediaType: 'Movie'
