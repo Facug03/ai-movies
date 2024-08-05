@@ -23,7 +23,7 @@ export default async function Movie({ params: { slug } }: { params: { slug: stri
   })
 
   if (errorMovie) {
-    return <div>Error</div>
+    throw errorMovie
   }
 
   return (

@@ -15,7 +15,7 @@ export default async function SeriesGenres({ params: { slug } }: { params: { slu
   const [errorGenre, dataGenre] = await getSeriesGenres()
 
   if (errorGenre || errorMovie) {
-    return <div>Error</div>
+    throw errorGenre ?? errorMovie
   }
 
   return (

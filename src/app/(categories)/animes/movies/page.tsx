@@ -11,7 +11,7 @@ export default async function AnimesSeries() {
   const [errorGenre, dataGenre] = await getMoviesGenres()
 
   if (errorGenre || errorMovie) {
-    return <div>Error</div>
+    throw errorGenre ?? errorMovie
   }
 
   return (

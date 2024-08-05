@@ -1,10 +1,10 @@
 import Image from 'next/image'
 
-import Button from '@/components/Button'
 import ButtonAssistant from '@/components/ButtonAssistant'
 import Play from '@/components/icons/Play'
 import { getMovies } from '@/services/movies'
 import { imagesPath } from '@/utils/images'
+import CustomLink from '@/components/custom-link'
 
 export default async function Hero() {
   const [error, data] = await getMovies({
@@ -12,7 +12,7 @@ export default async function Hero() {
   })
 
   if (error) {
-    return <div>Error</div>
+    throw error
   }
 
   const [movie] = data
@@ -39,7 +39,12 @@ export default async function Hero() {
       </p>
 
       <div className='flex flex-col gap-3 sm:flex-row sm:gap-6'>
-        <Button text='Watch trailer' type='primary' icon={<Play styles='w-5 h-5 fill-b stroke-b' />} />
+        <CustomLink
+          href={`/movie/${movie.id}#section-videos`}
+          text='Watch trailer'
+          type='primary'
+          icon={<Play styles='w-5 h-5 fill-b stroke-b' />}
+        />
         <ButtonAssistant type='info' title={movie.title} mediaType={movie.type ?? 'Movie'} />
       </div>
     </section>

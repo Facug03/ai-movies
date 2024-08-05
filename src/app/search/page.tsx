@@ -6,7 +6,7 @@ export default async function Search() {
   const [error, data] = await getAll('trending')
 
   if (error) {
-    return <div>Error</div>
+    throw error
   }
 
   return (

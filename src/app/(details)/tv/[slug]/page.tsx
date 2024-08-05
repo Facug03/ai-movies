@@ -23,7 +23,7 @@ export default async function Series({ params: { slug } }: { params: { slug: str
   })
 
   if (errorSeries) {
-    return <div>Error</div>
+    throw errorSeries
   }
 
   return (

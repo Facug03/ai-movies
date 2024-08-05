@@ -10,7 +10,7 @@ export default async function Slider({ title }: Props) {
   const [error, data] = await getMovies({ type: moviesSection[title] })
 
   if (error) {
-    return <div>Error</div>
+    throw error
   }
 
   return <SliderClient title={title} movies={data} />
