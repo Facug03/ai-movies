@@ -62,7 +62,8 @@ export default function Header() {
 
         <div
           ref={ref}
-          className='pointer-events-none fixed inset-0 z-10 w-screen items-center bg-b px-[6px] py-3 !opacity-0 transition-opacity duration-300 sm:px-2 md:hidden'
+          className='pointer-events-none fixed inset-0 z-10 w-screen items-center bg-b px-[6px] py-3 !opacity-0 transition-opacity
+            duration-300 sm:px-2 md:hidden'
         >
           <aside className='mb-8 flex h-6 w-full items-center justify-between'>
             <span className='text-m-t5 font-semibold uppercase text-primary'>Menu</span>

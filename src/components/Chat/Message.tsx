@@ -15,7 +15,7 @@ export default function Message({ message }: Props) {
   if (message.role === 'user') {
     return (
       <div className='flex justify-end'>
-        <p className='text-tinherit rounded-xl bg-w-10 px-3 py-1 text-w'>{message.content}</p>
+        <p className='rounded-xl bg-w-10 px-3 py-1 text-tinherit text-w'>{message.content}</p>
       </div>
     )
   }
@@ -29,12 +29,12 @@ export default function Message({ message }: Props) {
       <Markdown
         options={{
           overrides: {
-            p: ({ children }) => <p className='text-tinherit mb-2 whitespace-pre-wrap text-w'>{children}</p>,
+            p: ({ children }) => <p className='mb-2 whitespace-pre-wrap text-tinherit text-w'>{children}</p>,
             ul: ({ children }) => <ul className='mb-2 ml-2 flex list-disc flex-col gap-1'>{children}</ul>,
-            li: ({ children }) => <li className='text-tinherit whitespace-pre-wrap text-w'>{children}</li>,
-            span: ({ children }) => <span className='text-tinherit whitespace-pre-wrap text-w'>{children}</span>,
+            li: ({ children }) => <li className='whitespace-pre-wrap text-tinherit text-w'>{children}</li>,
+            span: ({ children }) => <span className='whitespace-pre-wrap text-tinherit text-w'>{children}</span>,
             a: ({ children, ...props }) => (
-              <a href={props.href} target='_blank' className='text-tinherit whitespace-pre-wrap text-blue-400'>
+              <a href={props.href} target='_blank' className='whitespace-pre-wrap text-tinherit text-blue-400'>
                 {children}
               </a>
             )

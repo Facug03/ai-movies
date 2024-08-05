@@ -17,7 +17,8 @@ export default function Dropdown({ label, dropdownTitle, items }: Props) {
       <span className='mb-1 block text-m-t6 font-bold text-w-75 sm:text-t6'>{label}</span>
       <button
         onClick={() => setDropdown(!dropdown)}
-        className='flex w-fit items-center justify-between gap-3 rounded-lg border-[1px] border-w-75 px-4 py-1 text-m-t7 font-medium text-w-75 sm:text-t6'
+        className='flex w-fit items-center justify-between gap-3 rounded-lg border-[1px] border-w-75 px-4 py-1 text-m-t7 font-medium
+          text-w-75 sm:text-t6'
       >
         {dropdownTitle || 'Categories'}
         <LeftArrow styles='w-5 h-5 stroke-w-75 -rotate-90' />

@@ -66,7 +66,10 @@ export default function SliderVideos({ videos }: Props) {
                   className='rounded-lg object-cover'
                 />
 
-                <div className='absolute left-1/2 top-1/2 flex size-12 -translate-x-2/4 -translate-y-2/4 items-center justify-center rounded-full border-2 border-primary transition-transform md:group-hover:scale-105'>
+                <div
+                  className='absolute left-1/2 top-1/2 flex size-12 -translate-x-2/4 -translate-y-2/4 items-center justify-center rounded-full
+                    border-2 border-primary transition-transform md:group-hover:scale-105'
+                >
                   <Play styles='w-6 h-6 fill-primary opacity-70 group-hover:opacity-100' />
                 </div>
               </div>

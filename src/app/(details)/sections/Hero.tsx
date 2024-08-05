@@ -26,7 +26,10 @@ export default function Hero(props: Props) {
 
     return (
       <section className='relative mb-16 mt-8 flex flex-col sm:mb-24 sm:mt-10'>
-        <div className='absolute -top-20 left-[calc(50%-50vw)] -z-10 h-[calc(100%+48px+32px+64px)] w-screen sm:-top-[88px] sm:h-[calc(100%+48px+40px+96px)]'>
+        <div
+          className='absolute -top-20 left-[calc(50%-50vw)] -z-10 h-[calc(100%+48px+32px+64px)] w-screen sm:-top-[88px]
+            sm:h-[calc(100%+48px+40px+96px)]'
+        >
           <Image
             priority
             src={imagesPath(mediaDetail.backdropPath, '1920x800')}
@@ -38,7 +41,10 @@ export default function Hero(props: Props) {
         </div>
 
         <div className='flex flex-col gap-3 sm:flex-row sm:gap-6'>
-          <div className='relative mb-3 aspect-[2/3] h-auto w-[50vw] self-center rounded-lg shadow-xl sm:w-[22vw] sm:self-start md:w-[18vw] lg:w-[12vw]'>
+          <div
+            className='relative mb-3 aspect-[2/3] h-auto w-[50vw] self-center rounded-lg shadow-xl sm:w-[22vw] sm:self-start md:w-[18vw]
+              lg:w-[12vw]'
+          >
             {mediaDetail.posterPath ? (
               <Image
                 src={imagesPath(mediaDetail.posterPath, '300x450')}
@@ -105,7 +111,10 @@ export default function Hero(props: Props) {
 
   return (
     <section className='relative mb-16 mt-8 flex flex-col sm:mb-24 sm:mt-10'>
-      <div className='absolute -top-20 left-[calc(50%-50vw)] -z-10 h-[calc(100%+48px+32px+64px)] w-screen sm:-top-[88px] sm:h-[calc(100%+48px+40px+96px)]'>
+      <div
+        className='absolute -top-20 left-[calc(50%-50vw)] -z-10 h-[calc(100%+48px+32px+64px)] w-screen sm:-top-[88px]
+          sm:h-[calc(100%+48px+40px+96px)]'
+      >
         <Image
           priority
           src={imagesPath(mediaDetail.backdropPath, '1920x800')}
@@ -117,7 +126,10 @@ export default function Hero(props: Props) {
       </div>
 
       <div className='flex flex-col gap-3 sm:flex-row sm:gap-6'>
-        <div className='relative mb-3 aspect-[2/3] h-auto w-[50vw] self-center rounded-lg shadow-xl sm:w-[22vw] sm:self-start md:w-[18vw] lg:w-[12vw]'>
+        <div
+          className='relative mb-3 aspect-[2/3] h-auto w-[50vw] self-center rounded-lg shadow-xl sm:w-[22vw] sm:self-start md:w-[18vw]
+            lg:w-[12vw]'
+        >
           {mediaDetail.posterPath ? (
             <Image
               src={imagesPath(mediaDetail.posterPath, '300x450')}

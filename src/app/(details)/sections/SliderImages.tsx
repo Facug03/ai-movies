@@ -36,7 +36,8 @@ export default function SliderImages({ images }: Props) {
           {images.backdrops.map((image) => (
             <div
               key={image.filePath}
-              className={`${images.backdrops.length > 1 ? 'mx-[calc(100vw-97.5vw)] sm:mx-[calc(100vw-20vw)]' : 'ml-[calc(100vw-97.5vw)]'} embla-slide relative aspect-[16/9] h-auto w-[95vw] max-w-[95vw] sm:w-[60vw] sm:max-w-[60vw]`}
+              className={`${images.backdrops.length > 1 ? 'mx-[calc(100vw-97.5vw)] sm:mx-[calc(100vw-20vw)]' : 'ml-[calc(100vw-97.5vw)]'}
+              embla-slide relative aspect-[16/9] h-auto w-[95vw] max-w-[95vw] sm:w-[60vw] sm:max-w-[60vw]`}
             >
               <Image
                 src={imagesPath(image.filePath, 1280)}

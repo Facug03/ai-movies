@@ -19,7 +19,10 @@ export default async function Hero() {
 
   return (
     <section className='relative mb-16 mt-8 flex flex-col sm:mb-28 sm:mt-10'>
-      <div className='absolute -top-20 left-[calc(50%-50vw)] -z-10 h-[calc(100%+3rem+2rem+4rem)] w-screen sm:-top-[5.5rem] sm:h-[calc(100%+3rem+2.5rem+7rem)]'>
+      <div
+        className='absolute -top-20 left-[calc(50%-50vw)] -z-10 h-[calc(100%+3rem+2rem+4rem)] w-screen sm:-top-[5.5rem]
+          sm:h-[calc(100%+3rem+2.5rem+7rem)]'
+      >
         <Image
           priority
           src={imagesPath(movie.backdropPath, '1920x800')}

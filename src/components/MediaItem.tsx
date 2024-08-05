@@ -40,7 +40,10 @@ export default function MediaItem({ media, type, animate }: Props) {
         </Link>
 
         <Link href={href} className='group'>
-          <h3 className='overflow-hidden text-ellipsis whitespace-nowrap text-m-t7 font-bold text-w transition-colors group-hover:text-primary sm:text-t7'>
+          <h3
+            className='overflow-hidden text-ellipsis whitespace-nowrap text-m-t7 font-bold text-w transition-colors group-hover:text-primary
+              sm:text-t7'
+          >
             {media.title}
           </h3>
           <p className='text-m-t8 text-w-75 transition-colors group-hover:text-w sm:text-t8'>
