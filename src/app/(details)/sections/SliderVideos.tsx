@@ -35,7 +35,7 @@ export default function SliderVideos({ videos }: Props) {
   })
 
   return (
-    <section className='mb-7 flex flex-col gap-3'>
+    <section id='section-videos' className='mb-7 flex flex-col gap-3'>
       {Boolean(slideIndex) && (
         <SliderScreen onClose={() => setSlideIndex(null)} startIndex={(slideIndex as number) - 1}>
           {videos.map((video) => (
