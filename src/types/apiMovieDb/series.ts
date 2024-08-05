@@ -1,11 +1,11 @@
 export interface Data {
   page: number
-  results: Result[]
+  results: Series[]
   total_pages: number
   total_results: number
 }
 
-export interface Result {
+export interface Series {
   adult: boolean
   backdrop_path: string
   genre_ids: number[]

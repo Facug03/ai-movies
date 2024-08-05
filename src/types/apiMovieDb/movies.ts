@@ -1,7 +1,7 @@
 export interface Data {
   dates?: Dates
   page: number
-  results: Result[]
+  results: Movies[]
   total_pages: number
   total_results: number
 }
@@ -11,7 +11,7 @@ export interface Dates {
   minimum: string
 }
 
-export interface Result {
+export interface Movies {
   adult: boolean
   backdrop_path: string
   genre_ids: number[]
