@@ -9,5 +9,6 @@ export const moviesSection: Record<MoviesSections, keyof typeof apis.movies> = {
 }
 
 export const seriesSections: Record<SeriesSections, keyof typeof apis.series> = {
-  'Animes we recommend': 'anime'
+  'Animes we recommend': 'anime',
+  'Streaming Now': 'onTheAir'
 }
