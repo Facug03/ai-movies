@@ -8,7 +8,7 @@
   }
 
   .tab {
-    @apply w-fit items-center justify-between gap-3 rounded-lg border-[1px] border-w-75 px-4 py-1 text-t6 font-bold text-w-75 hover:border-primary hover:bg-primary hover:text-b;
+    @apply w-fit items-center justify-between gap-3 rounded-lg border-[1px] border-w-75 px-4 py-1 text-t6 font-bold text-w-75 md:hover:border-primary active:border-primary md:hover:bg-primary active:bg-primary active:text-b md:hover:text-b;
   }
 
   .tab-selected {
