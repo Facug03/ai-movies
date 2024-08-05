@@ -11,5 +11,11 @@ export default {
   arrowParens: 'always',
   jsxSingleQuote: true,
   organizeImportsSkipDestructiveCodeActions: true,
-  plugins: ['prettier-plugin-organize-imports', 'prettier-plugin-tailwindcss']
+  plugins: [
+    'prettier-plugin-organize-imports',
+    'prettier-plugin-tailwindcss',
+    'prettier-plugin-classnames',
+    'prettier-plugin-merge'
+  ],
+  endingPosition: 'relative'
 }
