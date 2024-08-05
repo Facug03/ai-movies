@@ -1,5 +1,5 @@
 import Button from '@/components/Button'
-import Ai from '@/components/icons/Ai'
+import ButtonAssistant from '@/components/ButtonAssistant'
 import Heart from '@/components/icons/Heart'
 import Img from '@/components/icons/Img'
 import Like from '@/components/icons/Like'
@@ -88,7 +88,12 @@ export default function Hero(props: Props) {
 
             <div className='flex flex-col gap-3 sm:flex-row'>
               <Button text='Add to favorites' type='primary' icon={<Heart styles='w-6 h-6 text-b' />} />
-              <Button text='More info' type='secondary' icon={<Ai styles='w-7 h-7 fill-b stroke-b' />} />
+              <ButtonAssistant
+                type='info'
+                buttonText='More info'
+                title={mediaDetail.title}
+                mediaType={mediaDetail.type ?? 'Movie'}
+              />
             </div>
           </div>
         </div>
@@ -162,7 +167,12 @@ export default function Hero(props: Props) {
 
           <div className='flex flex-col gap-3 sm:flex-row'>
             <Button text='Add to favorites' type='primary' icon={<Heart styles='w-6 h-6 text-b' />} />
-            <Button text='More info' type='secondary' icon={<Ai styles='w-7 h-7 fill-b stroke-b' />} />
+            <ButtonAssistant
+              type='info'
+              buttonText='More info'
+              title={mediaDetail.title}
+              mediaType={mediaDetail.type ?? 'Movie'}
+            />
           </div>
         </div>
       </div>
