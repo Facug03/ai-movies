@@ -9,6 +9,7 @@ export default function Home() {
       <SliderMovies title='In theathers' />
       <SliderMovies title='Top rated films' />
       <SliderSeries title='Animes we recommend' />
+      <SliderSeries title='Streaming Now' />
     </>
   )
 }
