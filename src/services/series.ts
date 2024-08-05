@@ -4,6 +4,7 @@ import { Genres } from '@/types/genres'
 import { Media } from '@/types/media'
 import { applyFilters } from '@/utils/applyFilters'
 import { ApiResponse, apis } from './api'
+import { formatSeries } from '@/utils/format'
 
 export const getSeries = async ({
   type,
@@ -35,22 +36,7 @@ export const getSeries = async ({
     }
 
     const data = (await response.json()) as Data
-    const formatData: Media[] = data.results.map((media) => {
-      return {
-        backdropPath: media.backdrop_path,
-        id: media.id,
-        originalLanguage: media.original_language,
-        originalTitle: media.original_name,
-        overview: media.overview,
-        popularity: media.popularity,
-        posterPath: media.poster_path,
-        releaseDate: media.first_air_date,
-        title: media.name,
-        voteAverage: media.vote_average,
-        voteCount: media.vote_count,
-        type: 'Series'
-      }
-    })
+    const formatData: Media[] = formatSeries(data.results)
 
     return [null, formatData, url]
   } catch (error) {

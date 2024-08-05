@@ -4,6 +4,7 @@ import { Genres } from '@/types/genres'
 import { Media } from '@/types/media'
 import { applyFilters } from '@/utils/applyFilters'
 import { ApiResponse, apis } from './api'
+import { formatMovies } from '@/utils/format'
 
 export const getMovies = async ({
   type,
@@ -35,22 +36,7 @@ export const getMovies = async ({
     }
 
     const data = (await response.json()) as Data
-    const formatData: Media[] = data.results.map((media) => {
-      return {
-        backdropPath: media.backdrop_path,
-        id: media.id,
-        originalLanguage: media.original_language,
-        originalTitle: media.original_title,
-        overview: media.overview,
-        popularity: media.popularity,
-        posterPath: media.poster_path,
-        releaseDate: media.release_date,
-        title: media.title,
-        voteAverage: media.vote_average,
-        voteCount: media.vote_count,
-        type: 'Movie'
-      }
-    })
+    const formatData: Media[] = formatMovies(data.results)
 
     return [null, formatData, url]
   } catch (error) {
