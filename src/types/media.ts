@@ -10,9 +10,11 @@ export interface Media {
   title: string
   voteAverage: number
   voteCount: number
-  type?: 'Movie' | 'Series'
+  type?: MediaType
 }
 
 export type MoviesSections = 'In theathers' | 'Popular' | 'Top rated films' | 'Upcoming'
 
 export type SeriesSections = 'Animes we recommend'
+
+export type MediaType = 'Movie' | 'Series'

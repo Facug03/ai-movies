@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 import Button from '@/components/Button'
-import Ai from '@/components/icons/Ai'
+import ButtonAssistant from '@/components/ButtonAssistant'
 import Play from '@/components/icons/Play'
 import { getMovies } from '@/services/movies'
 import { imagesPath } from '@/utils/images'
@@ -37,7 +37,7 @@ export default async function Hero() {
 
       <div className='flex flex-col gap-3 sm:flex-row sm:gap-6'>
         <Button text='Watch trailer' type='primary' icon={<Play styles='w-5 h-5 fill-b stroke-b' />} />
-        <Button text='Information' type='secondary' icon={<Ai styles='w-7 h-7 fill-b stroke-b' />} />
+        <ButtonAssistant type='info' title={movie.title} mediaType={movie.type ?? 'Movie'} />
       </div>
     </section>
   )

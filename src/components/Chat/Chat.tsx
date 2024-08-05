@@ -7,36 +7,33 @@ import Draggable from 'react-draggable'
 import Ai from '@/components/icons/Ai'
 import Arrow from '@/components/icons/Arrow'
 import Close from '@/components/icons/Close'
+import { useChatStore } from '@/providers/chat-store-provider'
 import Message from './Message'
 import TabsSlider from './TabsSlider'
 
 interface Props {
-  onClose: () => void
-  toggleMinimize: () => void
-  minimized: boolean
+  id: string
 }
 
-export default function Chat({ onClose, toggleMinimize, minimized }: Props) {
-  const { messages, input, handleInputChange, handleSubmit, error, isLoading } = useChat({
-    initialMessages: [
-      {
-        role: 'system',
-        content:
-          'You are an AI assistant in a website about movies, animes, series, etc. You can only respond things related to that, if someone ask you something not-related, just say that you can only respond anything related to movies, animes, series, etc.',
-        id: 'default-message'
-      }
-    ]
-  })
+export default function Chat({ id }: Props) {
+  const { chats, toggleMinimize, closeChat } = useChatStore((state) => state)
+  const { minimized, systemPrompt, title, mediaType } = chats.find((chat) => chat.id === id) ?? {}
+  const { messages, input, handleInputChange, handleSubmit, error, isLoading, setMessages, reload, setInput } = useChat(
+    {
+      initialMessages: systemPrompt ?? []
+    }
+  )
   const refMessages = useRef<HTMLDivElement | null>(null)
-  const [fullSize, setFullSize] = useState(false)
   const [isMobile, setIsMobile] = useState(() => {
+    if (!window) return true
+
     return !window.matchMedia('(min-width: 768px)').matches
   })
+  const [fullSize, setFullSize] = useState(isMobile)
   const [dragging, setDragging] = useState(false)
 
   useEffect(() => {
     if (isLoading) {
-      console.log(refMessages.current?.lastElementChild)
       refMessages.current?.scrollTo({
         top: refMessages.current?.scrollHeight,
         behavior: 'smooth'
@@ -68,44 +65,75 @@ export default function Chat({ onClose, toggleMinimize, minimized }: Props) {
       position={fullSize ? { x: 0, y: 0 } : undefined}
     >
       <div
-        className={`fixed cursor-auto rounded-lg bg-b ease-in-out ${dragging ? '' : '[transition:opacity_0.2s,transform_0.2s]'} ${fullSize ? 'bottom-0 right-0 h-dvh w-screen duration-500' : 'bottom-5 right-4 w-[21rem] min-w-[21rem] border-[1px] border-w-50'} ${minimized ? 'minimized' : ''}`}
+        className={`fixed z-50 cursor-auto rounded-lg bg-b ease-in-out ${dragging ? '' : '[transition:opacity_0.2s,transform_0.2s]'}
+          ${fullSize ? 'bottom-0 right-0 h-dvh w-screen duration-500' : 'bottom-20 right-4 w-[21rem] min-w-[21rem] border-[1px] border-w-50'}
+          ${minimized ? 'minimized' : ''}`}
       >
         <div className='mx-auto flex h-full max-w-3xl flex-col justify-between py-2'>
           <div className={`${fullSize ? 'text-t6 md:text-t6' : 'text-t7 md:text-t7'}`}>
             <header
               className={`mb-4 flex items-center justify-between px-2 ${fullSize ? 'cursor-auto' : 'cursor-move'}`}
             >
-              <span className={`font-bold text-w ${fullSize ? 'text-m-t4 md:text-t4' : 'text-m-t5 md:text-t5'}`}>
-                Assistant
-              </span>
+              <div className='overflow-hidden'>
+                <h4 className={`font-bold text-w ${fullSize ? 'text-m-t4 md:text-t4' : 'text-m-t5 md:text-t5'}`}>
+                  Assistant
+                </h4>
+                <h5
+                  className={`font-bold text-w-75 ${fullSize ? 'text-m-t5 md:text-t5' : 'text-m-t7 md:text-t7'} overflow-hidden text-ellipsis
+                    whitespace-nowrap`}
+                >
+                  {title}
+                </h5>
+              </div>
 
-              <div className='flex items-center gap-2'>
-                <button aria-label='Minimize' className='mt-1' onClick={toggleMinimize}>
-                  <Arrow styles='w-5 h-5 fill-primary' />
+              <div className='flex items-center gap-3'>
+                <button
+                  aria-label='Minimize'
+                  className='mr-1 h-4 w-4 hover:opacity-60'
+                  onClick={() => toggleMinimize(id)}
+                >
+                  <div className='h-1 w-4 border-b-2 border-primary opacity-80' />
                 </button>
-                <button onClick={() => setFullSize(!fullSize)} className='text-t5 text-primary'>
-                  [ ]
-                </button>
-                <button aria-label='Close' className='mt-1' onClick={onClose}>
+                {!isMobile && (
+                  <button
+                    onClick={() => setFullSize(!fullSize)}
+                    className='relative h-4 w-4 text-t5 text-primary hover:opacity-60'
+                  >
+                    {fullSize ? (
+                      <>
+                        <div className='absolute left-1/2 top-1/2 z-10 h-3 w-3 -translate-x-1/2 -translate-y-1/3 border-2 border-primary bg-b opacity-80' />
+                        <div className='absolute left-2/3 top-1/3 h-3 w-3 -translate-x-1/2 -translate-y-1/3 border-2 border-primary opacity-80' />
+                      </>
+                    ) : (
+                      <div className='h-4 w-4 border-2 border-primary opacity-80' />
+                    )}
+                  </button>
+                )}
+                <button
+                  aria-label='Close'
+                  className='hover:opacity-60'
+                  onClick={() => {
+                    document.body.classList.remove('overflow-hidden')
+                    closeChat(id)
+                  }}
+                >
                   <Close styles='w-5 h-5 fill-primary' />
                 </button>
               </div>
             </header>
 
-            <TabsSlider />
+            <TabsSlider
+              mediaType={mediaType ?? 'Movie'}
+              reload={reload}
+              title={title ?? ''}
+              setMessages={setMessages}
+              setInput={setInput}
+            />
 
             <div
               ref={refMessages}
-              className={`flex flex-col gap-3 overflow-y-auto px-2 py-4 ${fullSize ? 'h-[calc(100dvh-10.25rem)]' : 'h-80'}`}
+              className={`flex flex-col gap-3 overflow-y-auto px-2 py-4 ${fullSize ? 'h-[calc(100dvh-12.125rem)]' : 'h-80'}`}
             >
-              <Message
-                message={{
-                  content: 'Ask anything related to movies, series or animes.',
-                  id: 'default-message-assistant',
-                  role: 'assistant'
-                }}
-              />
-
               {messages.map((m) => (
                 <Message key={m.id} message={m} />
               ))}
@@ -133,7 +161,10 @@ export default function Chat({ onClose, toggleMinimize, minimized }: Props) {
               onChange={handleInputChange}
             />
 
-            <button className='flex size-7 flex-shrink-0 items-center justify-center rounded-full border-[1px] border-primary'>
+            <button
+              className='flex size-7 flex-shrink-0 items-center justify-center rounded-full border-[1px] border-primary'
+              disabled={isLoading}
+            >
               <Arrow styles='w-5 h-5 text-primary -rotate-90 scale-110' />
             </button>
           </form>

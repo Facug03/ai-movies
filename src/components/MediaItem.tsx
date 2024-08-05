@@ -1,11 +1,12 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import Img from '@/components/icons/Img'
 import { Media } from '@/types/media'
 import { imagesPath } from '@/utils/images'
 import { isLatinAlphabet } from '@/utils/isLatinAlphabet'
 import { slugify } from '@/utils/slugify'
-import Link from 'next/link'
+import ButtonAssistant from './ButtonAssistant'
 
 interface Props {
   media: Media
@@ -18,7 +19,8 @@ export default function MediaItem({ media, type, animate }: Props) {
 
   if (type === 'grid') {
     return (
-      <article className={`${animate ? 'animate-fade-in duration-75' : ''}`}>
+      <article className={`${animate ? 'animate-fade-in duration-75' : ''} relative`}>
+        <ButtonAssistant type='item' title={media.title} mediaType={media.type ?? 'Movie'} />
         <Link href={href}>
           <div className='relative mb-3 aspect-[2/3] h-auto w-[27vw] rounded-lg sm:w-[22vw] md:w-[18vw] lg:w-[14vw] xl:w-full'>
             {media.posterPath ? (
@@ -50,7 +52,8 @@ export default function MediaItem({ media, type, animate }: Props) {
   }
 
   return (
-    <article className='embla-slide mr-3 flex-[0_0_27%] sm:flex-[0_0_22%] md:flex-[0_0_16%] lg:flex-[0_0_12%]'>
+    <article className='embla-slide relative mr-3 flex-[0_0_27%] sm:flex-[0_0_22%] md:flex-[0_0_16%] lg:flex-[0_0_12%]'>
+      <ButtonAssistant type='item' title={media.title} mediaType={media.type ?? 'Movie'} />
       <Link href={href}>
         <div className='relative mb-3 aspect-[2/3] h-auto w-full rounded-lg'>
           {media.posterPath ? (
