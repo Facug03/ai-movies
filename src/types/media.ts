@@ -15,6 +15,6 @@ export interface Media {
 
 export type MoviesSections = 'In theathers' | 'Popular' | 'Top rated films' | 'Upcoming'
 
-export type SeriesSections = 'Animes we recommend'
+export type SeriesSections = 'Animes we recommend' | 'Streaming Now'
 
 export type MediaType = 'Movie' | 'Series'
