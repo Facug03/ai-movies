@@ -65,14 +65,14 @@ export default function MediaPage({ genres, mediaContent, title, page, dropdownT
           <div className='mb-2 flex flex-wrap gap-2 sm:mb-4'>
             <Link
               href='/animes/series'
-              className={`${page === 'animes/series' ? 'bg-primary text-b' : 'border-[1px] border-w-75 text-w-75 hover:border-primary hover:bg-primary hover:text-b'} hidden w-fit items-center justify-between gap-3 rounded-lg px-4 py-1 text-t6 font-bold sm:flex`}
+              className={`${page === 'animes/series' ? 'bg-primary text-b' : 'hover:border-primary-80 hover:bg-primary-80 border-[1px] border-w-75 text-w-75 hover:text-b'} hidden w-fit items-center justify-between gap-3 rounded-lg px-4 py-1 text-t6 font-bold sm:flex`}
             >
               Series
             </Link>
 
             <Link
               href='/animes/movies'
-              className={`${page === 'animes/movies' ? 'bg-primary text-b' : 'border-[1px] border-w-75 text-w-75 hover:border-primary hover:bg-primary hover:text-b'} hidden w-fit items-center justify-between gap-3 rounded-lg px-4 py-1 text-t6 font-bold sm:flex`}
+              className={`${page === 'animes/movies' ? 'bg-primary text-b' : 'hover:border-primary-80 hover:bg-primary-80 border-[1px] border-w-75 text-w-75 hover:text-b'} hidden w-fit items-center justify-between gap-3 rounded-lg px-4 py-1 text-t6 font-bold sm:flex`}
             >
               Movies
             </Link>
@@ -113,7 +113,7 @@ export default function MediaPage({ genres, mediaContent, title, page, dropdownT
         <div className='group flex flex-wrap gap-2'>
           <Link
             href={`/${page}`}
-            className={`${dropdownTitle === 'All' ? 'bg-primary text-b' : 'border-[1px] border-w-75 text-w-75 transition-colors hover:border-primary hover:bg-primary hover:text-b'} hidden w-fit items-center justify-between gap-3 rounded-lg px-4 py-1 text-t6 font-bold sm:flex`}
+            className={`${dropdownTitle === 'All' ? 'bg-primary text-b' : 'hover:border-primary-80 hover:bg-primary-80 border-[1px] border-w-75 text-w-75 transition-colors hover:text-b'} hidden w-fit items-center justify-between gap-3 rounded-lg px-4 py-1 text-t6 font-bold sm:flex`}
           >
             All
           </Link>
@@ -122,7 +122,7 @@ export default function MediaPage({ genres, mediaContent, title, page, dropdownT
             <Link
               key={genre.id}
               href={`/${page}/${slugify(genre.name)}-${genre.id}`}
-              className={`${dropdownTitle === genre.name ? 'bg-primary text-b' : 'border-[1px] border-w-75 text-w-75 transition-colors hover:border-primary hover:bg-primary hover:text-b'} hidden w-fit items-center justify-between gap-3 rounded-lg px-4 py-1 text-t6 font-bold sm:flex`}
+              className={`${dropdownTitle === genre.name ? 'bg-primary text-b' : 'hover:border-primary-80 hover:bg-primary-80 border-[1px] border-w-75 text-w-75 transition-colors hover:text-b'} hidden w-fit items-center justify-between gap-3 rounded-lg px-4 py-1 text-t6 font-bold sm:flex`}
             >
               {genre.name}
             </Link>
