@@ -5,7 +5,7 @@ import { v4 } from 'uuid'
 
 import { useChatStore } from '@/providers/chat-store-provider'
 import { MediaType } from '@/types/media'
-import Button from './Button'
+import Button from './button'
 import Ai from './icons/Ai'
 
 interface Props {

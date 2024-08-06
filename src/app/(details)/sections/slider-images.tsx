@@ -4,10 +4,10 @@ import useEmblaCarousel from 'embla-carousel-react'
 import Image from 'next/image'
 import { useState } from 'react'
 
-import SliderNav from '@/components/SliderNav'
-import { Images } from '@/types/movieDetail'
+import SliderNav from '@/components/slider-nav'
+import { Images } from '@/types/movie-detail'
 import { imagesPath } from '@/utils/images'
-import SliderScreen from '../components/SliderScreen'
+import SliderScreen from '../components/slider-screen'
 
 interface Props {
   images: Images

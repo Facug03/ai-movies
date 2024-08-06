@@ -1,6 +1,6 @@
 'use client'
 
-import MediaItem from '@/components/MediaItem'
+import MediaItem from '@/components/media-item'
 import { Media } from '@/types/media'
 
 interface Props {

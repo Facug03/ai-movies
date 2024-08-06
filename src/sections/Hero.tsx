@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import ButtonAssistant from '@/components/ButtonAssistant'
+import ButtonAssistant from '@/components/button-assistant'
 import Play from '@/components/icons/Play'
 import { getMovies } from '@/services/movies'
 import { imagesPath } from '@/utils/images'

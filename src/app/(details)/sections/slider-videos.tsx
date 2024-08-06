@@ -6,12 +6,12 @@ import Image from 'next/image'
 import { useState } from 'react'
 
 import Play from '@/components/icons/Play'
-import SliderNav from '@/components/SliderNav'
-import { youtubeThumbnail } from '@/consts/youtubeThumbnail'
-import { Video } from '@/types/movieDetail'
-import SliderScreen from '../components/SliderScreen'
+import SliderNav from '@/components/slider-nav'
+import { youtubeThumbnail } from '@/consts/youtube-thumbnail'
+import { Video } from '@/types/movie-detail'
+import SliderScreen from '../components/slider-screen'
 
-const YTEmbedSlide = dynamic(() => import('../components/YTEmbedSlide'))
+const YTEmbedSlide = dynamic(() => import('../components/yt-embed-slide'))
 
 interface Props {
   videos: Video[]

@@ -1,8 +1,8 @@
 import { ApiResponse, apis } from '@/services/api'
-import { DataMovieDetail } from '@/types/apiMovieDb/movieDetail'
+import { DataMovieDetail } from '@/types/api-movie-db/movie-detail'
 import { MovieFilters } from '@/types/filters'
-import { MovieDetail } from '@/types/movieDetail'
-import { applyFilters } from '@/utils/applyFilters'
+import { MovieDetail } from '@/types/movie-detail'
+import { applyFilters } from '@/utils/apply-filters'
 
 export const getMovie = async (
   id: number,

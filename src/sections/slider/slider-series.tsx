@@ -1,6 +1,6 @@
-import { seriesSections } from '@/consts/sectionsNames'
+import { seriesSections } from '@/consts/sections-names'
 import { getSeries } from '@/services/series'
-import SliderClient from './SliderClient'
+import SliderClient from './slider-client'
 
 interface Props {
   title: keyof typeof seriesSections

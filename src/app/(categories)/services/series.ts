@@ -1,5 +1,5 @@
 import { PaginatedResponse } from '@/app/(categories)/types/paginatedResponse'
-import { Data } from '@/types/apiMovieDb/series'
+import { Data } from '@/types/api-movie-db/series'
 import { Media } from '@/types/media'
 
 export const getSeriesPaginated = async (url: string): Promise<PaginatedResponse> => {

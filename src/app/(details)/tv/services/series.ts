@@ -1,8 +1,8 @@
 import { ApiResponse, apis } from '@/services/api'
-import { DataSeriesDetail } from '@/types/apiMovieDb/seriesDetail'
+import { DataSeriesDetail } from '@/types/api-movie-db/series-detail'
 import { MovieFilters } from '@/types/filters'
-import { SeriesDetail } from '@/types/seriesDetail'
-import { applyFilters } from '@/utils/applyFilters'
+import { SeriesDetail } from '@/types/series-detail'
+import { applyFilters } from '@/utils/apply-filters'
 
 export const getSeries = async (
   id: number,

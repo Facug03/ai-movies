@@ -1,4 +1,4 @@
-import { Data } from '@/types/apiMovieDb/all'
+import { Data } from '@/types/api-movie-db/all'
 import { Media } from '@/types/media'
 import { SearchResults } from '@/types/search'
 import { apis } from './api'

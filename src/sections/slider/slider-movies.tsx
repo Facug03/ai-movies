@@ -1,6 +1,6 @@
-import { moviesSection } from '@/consts/sectionsNames'
+import { moviesSection } from '@/consts/sections-names'
 import { getMovies } from '@/services/movies'
-import SliderClient from './SliderClient'
+import SliderClient from './slider-client'
 
 interface Props {
   title: keyof typeof moviesSection

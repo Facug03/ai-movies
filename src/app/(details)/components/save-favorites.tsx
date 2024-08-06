@@ -1,6 +1,6 @@
 'use client'
 
-import Button from '@/components/Button'
+import Button from '@/components/button'
 import Heart from '@/components/icons/Heart'
 import { Media } from '@/types/media'
 import { useFavorites } from '@/hooks/use-favorites'

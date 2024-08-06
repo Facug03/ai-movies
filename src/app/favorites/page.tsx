@@ -1,4 +1,4 @@
-import { FavoritesList } from './sections/FavoritesList'
+import { FavoritesList } from './sections/favorites-list'
 
 export default function Page() {
   return (

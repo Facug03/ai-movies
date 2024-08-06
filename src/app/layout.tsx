@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
 import { Schibsted_Grotesk } from 'next/font/google'
 
-import ButtonAssistant from '@/components/ButtonAssistant'
-import AllChats from '@/components/Chat/all-chats'
+import ButtonAssistant from '@/components/button-assistant'
+import AllChats from '@/components/chat/all-chats'
 import { ChatStoreProvider } from '@/providers/chat-store-provider'
-import Header from '@/sections/Header'
+import Header from '@/sections/header'
 import './globals.css'
 
 const schibstedGrotesk = Schibsted_Grotesk({ subsets: ['latin'] })

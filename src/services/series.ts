@@ -1,8 +1,8 @@
-import { Data } from '@/types/apiMovieDb/series'
+import { Data } from '@/types/api-movie-db/series'
 import { MovieFilters } from '@/types/filters'
 import { Genres } from '@/types/genres'
 import { Media } from '@/types/media'
-import { applyFilters } from '@/utils/applyFilters'
+import { applyFilters } from '@/utils/apply-filters'
 import { ApiResponse, apis } from './api'
 import { formatSeries } from '@/utils/format'
 

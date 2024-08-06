@@ -4,9 +4,9 @@ import Link from 'next/link'
 import Img from '@/components/icons/Img'
 import { Media } from '@/types/media'
 import { imagesPath } from '@/utils/images'
-import { isLatinAlphabet } from '@/utils/isLatinAlphabet'
+import { isLatinAlphabet } from '@/utils/is-latin-alphabet'
 import { slugify } from '@/utils/slugify'
-import ButtonAssistant from './ButtonAssistant'
+import ButtonAssistant from './button-assistant'
 
 interface Props {
   media: Media

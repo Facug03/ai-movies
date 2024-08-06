@@ -1,7 +1,7 @@
 'use client'
 
 import LeftArrow from '@/components/icons/LeftArrow'
-import { useCanSlideScroll } from '@/hooks/useCanSlideScroll'
+import { useCanSlideScroll } from '@/hooks/use-can-slide-scroll'
 import { UseEmblaCarouselType } from 'embla-carousel-react'
 
 interface Props {

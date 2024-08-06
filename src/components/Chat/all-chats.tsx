@@ -1,7 +1,7 @@
 'use client'
 
 import { useChatStore } from '@/providers/chat-store-provider'
-import Chat from './Chat'
+import Chat from './chat'
 
 export default function AllChats() {
   const chats = useChatStore((state) => state.chats)

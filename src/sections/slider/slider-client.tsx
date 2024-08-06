@@ -2,8 +2,8 @@
 
 import useEmblaCarousel from 'embla-carousel-react'
 
-import MediaItem from '@/components/MediaItem'
-import SliderNav from '@/components/SliderNav'
+import MediaItem from '@/components/media-item'
+import SliderNav from '@/components/slider-nav'
 import { Media } from '@/types/media'
 
 interface Props {

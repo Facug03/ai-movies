@@ -5,7 +5,7 @@ import { PropsWithChildren, useCallback, useEffect, useState } from 'react'
 
 import Close from '@/components/icons/Close'
 import LeftArrow from '@/components/icons/LeftArrow'
-import { useCanSlideScroll } from '@/hooks/useCanSlideScroll'
+import { useCanSlideScroll } from '@/hooks/use-can-slide-scroll'
 
 interface Props extends PropsWithChildren {
   onClose: () => void

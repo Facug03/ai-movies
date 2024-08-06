@@ -1,15 +1,15 @@
 import Image from 'next/image'
 
-import ButtonAssistant from '@/components/ButtonAssistant'
+import ButtonAssistant from '@/components/button-assistant'
 import Img from '@/components/icons/Img'
 import Like from '@/components/icons/Like'
 import Star from '@/components/icons/Star'
-import { MovieDetail } from '@/types/movieDetail'
-import { SeriesDetail } from '@/types/seriesDetail'
+import { MovieDetail } from '@/types/movie-detail'
+import { SeriesDetail } from '@/types/series-detail'
 import { formatMovieDetail, formatSeriesDetail } from '@/utils/format'
 import { imagesPath } from '@/utils/images'
-import { SaveFavorites } from '../components/SaveFavorites'
-import { numberToHour } from '@/utils/numberToHour'
+import { SaveFavorites } from '../components/save-favorites'
+import { numberToHour } from '@/utils/number-to-hour'
 
 type Props =
   | {

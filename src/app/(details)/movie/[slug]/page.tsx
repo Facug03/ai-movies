@@ -1,11 +1,11 @@
 // import { unstable_cache } from 'next/cache'
 
 import { getMovie } from '@/app/(details)/movie/services/movie'
-import Hero from '@/app/(details)/sections/Hero'
-import SliderImages from '@/app/(details)/sections/SliderImages'
-import SliderVideos from '@/app/(details)/sections/SliderVideos'
-import SliderClient from '@/sections/slider/SliderClient'
-import MediaInfo from '../../components/MediaInfo'
+import Hero from '@/app/(details)/sections/hero'
+import SliderImages from '@/app/(details)/sections/slider-images'
+import SliderVideos from '@/app/(details)/sections/slider-videos'
+import SliderClient from '@/sections/slider/slider-client'
+import MediaInfo from '../../components/media-info'
 
 // const getCachedMovie = unstable_cache(
 //   async (id: number) =>

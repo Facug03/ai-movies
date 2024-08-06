@@ -1,4 +1,4 @@
-import MediaPage from '@/app/(categories)/components/MediaPage'
+import MediaPage from '@/app/(categories)/components/media-page'
 import { getMovies, getMoviesGenres } from '@/services/movies'
 import { slugify } from '@/utils/slugify'
 

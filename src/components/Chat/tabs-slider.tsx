@@ -52,7 +52,7 @@ function MoviesTabs({ title, reload, setMessages }: Props) {
       <Tab onClick={() => onClickSubmit(`How was ${title} made?`)}>Production</Tab>
       <Tab onClick={() => onClickSubmit(`Who are the main characters of ${title}?`)}>Characters</Tab>
       <Tab onClick={() => onClickSubmit(`What is the plot of ${title}?`)}>Plot</Tab>
-      <Tab onClick={() => onClickSubmit(`Was ${title} based on a book, comic book, or other source material??`)}>
+      <Tab onClick={() => onClickSubmit(`Was ${title} based on a book, comic book, or other source material?`)}>
         Adaptations
       </Tab>
       <Tab onClick={() => onClickSubmit(`Who directed ${title}?`)}>Director</Tab>
@@ -85,7 +85,7 @@ function SeriesTabs({ title, reload, setMessages }: Props) {
       <Tab onClick={() => onClickSubmit(`How was ${title} made?`)}>Production</Tab>
       <Tab onClick={() => onClickSubmit(`Who are the main characters of ${title}?`)}>Characters</Tab>
       <Tab onClick={() => onClickSubmit(`What is the plot of ${title}?`)}>Plot</Tab>
-      <Tab onClick={() => onClickSubmit(`Was ${title} based on a book, comic book, or other source material??`)}>
+      <Tab onClick={() => onClickSubmit(`Was ${title} based on a book, comic book, or other source material?`)}>
         Adaptations
       </Tab>
       <Tab onClick={() => onClickSubmit(`Who directed ${title}?`)}>Director</Tab>

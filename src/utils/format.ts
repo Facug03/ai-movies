@@ -1,8 +1,8 @@
-import { Movies } from '@/types/apiMovieDb/movies'
-import { Series } from '@/types/apiMovieDb/series'
+import { Movies } from '@/types/api-movie-db/movies'
+import { Series } from '@/types/api-movie-db/series'
 import { Media } from '@/types/media'
-import { MovieDetail } from '@/types/movieDetail'
-import { SeriesDetail } from '@/types/seriesDetail'
+import { MovieDetail } from '@/types/movie-detail'
+import { SeriesDetail } from '@/types/series-detail'
 
 export const formatMovies = (movies: Movies[]): Media[] => {
   return movies.map((movie) => {

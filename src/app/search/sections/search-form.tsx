@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import useSWRInfinite from 'swr/infinite'
 
-import MediaGrid from '@/components/MediaGrid'
+import MediaGrid from '@/components/media-grid'
 import Spinner from '@/components/icons/Spinner'
 import { searchAll } from '@/services/all'
 import { apis } from '@/services/api'
