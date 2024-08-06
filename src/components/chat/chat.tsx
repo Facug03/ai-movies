@@ -10,7 +10,7 @@ import Close from '@/components/icons/Close'
 import { useFavorites } from '@/hooks/use-favorites'
 import { useChatStore } from '@/providers/chat-store-provider'
 import { generateFavoritesSystemPropmts } from '@/utils/propmts'
-import { Message } from './message'
+import { Message, MemoMessage } from './message'
 import TabsSlider from './tabs-slider'
 
 interface Props {
@@ -137,9 +137,13 @@ export default function Chat({ id }: Props) {
               ref={refMessages}
               className={`flex flex-col gap-3 overflow-y-auto px-2 py-4 ${fullSize ? 'h-[calc(100dvh-12.125rem)]' : 'h-80'}`}
             >
-              {messages.map((m) => (
-                <Message key={m.id} message={m} />
-              ))}
+              {messages.map((m, index) => {
+                if (messages.length - 1 === index) {
+                  return <Message key={m.id} message={m} />
+                }
+
+                return <MemoMessage key={m.id} message={m} />
+              })}
 
               {error && (
                 <div className='flex gap-2'>
