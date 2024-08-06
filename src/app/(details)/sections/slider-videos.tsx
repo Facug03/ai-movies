@@ -60,6 +60,7 @@ export default function SliderVideos({ videos }: Props) {
                 onClick={() => setSlideIndex(index + 1)}
               >
                 <Image
+                  unoptimized
                   src={youtubeThumbnail(video.key)}
                   fill
                   alt='background images'
