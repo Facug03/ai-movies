@@ -49,7 +49,6 @@ export function Message({ message }: Props) {
 }
 
 export const MemoMessage = memo(function Message({ message }: Props) {
-  console.count(message.content)
   if (message.role !== 'user' && message.role !== 'assistant') return null
 
   if (message.role === 'user') {
