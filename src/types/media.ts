@@ -1,6 +1,6 @@
 export interface Media {
   id: number
-  backdropPath: string
+  backdropPath: string | null
   originalLanguage: string
   originalTitle: string
   overview: string
