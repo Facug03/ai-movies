@@ -7,11 +7,11 @@ import Draggable from 'react-draggable'
 import Ai from '@/components/icons/Ai'
 import Arrow from '@/components/icons/Arrow'
 import Close from '@/components/icons/Close'
+import { useFavorites } from '@/hooks/use-favorites'
 import { useChatStore } from '@/providers/chat-store-provider'
+import { generateFavoritesSystemPropmts } from '@/utils/propmts'
 import Message from './message'
 import TabsSlider from './tabs-slider'
-import { useFavorites } from '@/hooks/use-favorites'
-import { generateFavoritesSystemPropmts } from '@/utils/propmts'
 
 interface Props {
   id: string

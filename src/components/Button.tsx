@@ -5,7 +5,7 @@ interface Props {
   onClick?: () => void
 }
 
-export default function Button({ text, type, icon, onClick }: Props) {
+export default function Button({ text, icon, onClick, type }: Props) {
   if (type === 'secondary') {
     return (
       <button

@@ -56,7 +56,7 @@ export default function ButtonAssistant({ type, title, mediaType, buttonText = '
             <button
               key={chat.id}
               className={`${
-            chat.minimized || !chat.isOpen
+                chat.minimized || !chat.isOpen
                   ? 'group border-w-75 bg-b text-w-75 active:bg-primary md:hover:border-primary md:hover:bg-primary md:hover:text-b'
                   : `border-primary bg-primary text-b active:border-primary-80 active:bg-primary-80 md:hover:border-primary-80
                     md:hover:bg-primary-80`

@@ -2,8 +2,8 @@
 
 import Button from '@/components/button'
 import Heart from '@/components/icons/Heart'
-import { Media } from '@/types/media'
 import { useFavorites } from '@/hooks/use-favorites'
+import { Media } from '@/types/media'
 
 interface Props {
   media: Media

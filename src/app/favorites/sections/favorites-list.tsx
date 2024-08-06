@@ -2,10 +2,10 @@
 
 import Image from 'next/image'
 
-import { imagesPath } from '@/utils/images'
+import { Delete } from '@/components/icons/delete'
 import Img from '@/components/icons/Img'
 import { useFavorites } from '@/hooks/use-favorites'
-import { Delete } from '@/components/icons/delete'
+import { imagesPath } from '@/utils/images'
 
 export function FavoritesList() {
   const { favorites, removeFavorite, isLoading } = useFavorites()

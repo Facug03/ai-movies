@@ -1,8 +1,8 @@
+import { config } from '@/config'
 import { Data } from '@/types/api-movie-db/all'
 import { Media } from '@/types/media'
 import { SearchResults } from '@/types/search'
 import { apis } from './api'
-import { config } from '@/config'
 
 export const getAll = async (type: keyof typeof apis.all): Promise<[null, Media[]] | [Error, null]> => {
   try {

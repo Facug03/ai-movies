@@ -1,11 +1,11 @@
+import { config } from '@/config'
 import { Data } from '@/types/api-movie-db/series'
 import { MovieFilters } from '@/types/filters'
 import { Genres } from '@/types/genres'
 import { Media } from '@/types/media'
 import { applyFilters } from '@/utils/apply-filters'
-import { ApiResponse, apis } from './api'
 import { formatSeries } from '@/utils/format'
-import { config } from '@/config'
+import { ApiResponse, apis } from './api'
 
 export const getSeries = async ({
   type,

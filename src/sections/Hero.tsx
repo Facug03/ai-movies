@@ -1,10 +1,10 @@
 import Image from 'next/image'
 
 import ButtonAssistant from '@/components/button-assistant'
+import CustomLink from '@/components/custom-link'
 import Play from '@/components/icons/Play'
 import { getMovies } from '@/services/movies'
 import { imagesPath } from '@/utils/images'
-import CustomLink from '@/components/custom-link'
 
 export default async function Hero() {
   const [error, data] = await getMovies({

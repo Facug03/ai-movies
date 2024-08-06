@@ -8,8 +8,8 @@ import { MovieDetail } from '@/types/movie-detail'
 import { SeriesDetail } from '@/types/series-detail'
 import { formatMovieDetail, formatSeriesDetail } from '@/utils/format'
 import { imagesPath } from '@/utils/images'
-import { SaveFavorites } from '../components/save-favorites'
 import { numberToHour } from '@/utils/number-to-hour'
+import { SaveFavorites } from '../components/save-favorites'
 
 type Props =
   | {

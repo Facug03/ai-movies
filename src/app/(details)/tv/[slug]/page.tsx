@@ -5,8 +5,8 @@ import SliderImages from '@/app/(details)/sections/slider-images'
 import SliderVideos from '@/app/(details)/sections/slider-videos'
 import { getSeries } from '@/app/(details)/tv/services/series'
 import SliderClient from '@/sections/slider/slider-client'
-import MediaInfo from '../../components/media-info'
 import { Metadata } from 'next'
+import MediaInfo from '../../components/media-info'
 
 // const getCachedMovie = unstable_cache(
 //   async (id: number) =>
