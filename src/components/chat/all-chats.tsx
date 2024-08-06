@@ -3,7 +3,7 @@
 import { useChatStore } from '@/providers/chat-store-provider'
 import Chat from './chat'
 
-export function AllChats() {
+export default function AllChats() {
   const chats = useChatStore((state) => state.chats)
 
   return (
