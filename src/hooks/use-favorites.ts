@@ -11,13 +11,13 @@ export function useFavorites() {
   useEffect(() => {
     const favoritesLs = localStorage.getItem('favorites')
 
-    if (!favoritesLs) return
-
     const favoritesParsed = favoritesLs ? (JSON.parse(favoritesLs) as Media[]) : []
     setFavorites(favoritesParsed)
   }, [])
 
   const addFavorite = (media: Media) => {
+    if (favorites?.some((item) => item.id === media.id)) return
+
     const favoritesLs = localStorage.getItem('favorites')
 
     if (favoritesLs) {
