@@ -13,7 +13,7 @@ export function FavoritesList() {
   if (isLoading) return null
 
   return (
-    <section className='flex flex-col gap-4'>
+    <section className='mb-10 flex flex-col gap-4'>
       {favorites && favorites.length > 0 ? (
         favorites.map((favorite) => {
           return (
