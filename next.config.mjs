@@ -6,9 +6,7 @@ const nextConfig = {
         hostname: 'image.tmdb.org',
         protocol: 'https'
       }
-    ],
-    loader: 'custom',
-    loaderFile: './src/imageLoader.ts'
+    ]
   }
 }
 
