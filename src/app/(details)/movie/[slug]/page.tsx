@@ -1,4 +1,5 @@
 // import { unstable_cache } from 'next/cache'
+import { Metadata } from 'next'
 
 import { getMovie } from '@/app/(details)/movie/services/movie'
 import Hero from '@/app/(details)/sections/hero'
@@ -14,6 +15,30 @@ import MediaInfo from '../../components/media-info'
 //     }),
 //   ['movie-detail']
 // )
+
+interface Props {
+  params: {
+    slug: string
+  }
+}
+
+export async function generateMetadata({ params: { slug } }: Props): Promise<Metadata> {
+  const splitSlug = slug.split('-')
+  const [errorMovie, dataMovie] = await getMovie(Number(splitSlug[0]), {
+    language: 'en'
+  })
+
+  if (errorMovie) {
+    throw errorMovie
+  }
+
+  const releaseYear = dataMovie.releaseDate?.split('-')[0]
+
+  return {
+    title: `${dataMovie.title} ${releaseYear ? `(${releaseYear}) ` : ''}- aiMovies`,
+    description: dataMovie.overview
+  }
+}
 
 export default async function Movie({ params: { slug } }: { params: { slug: string } }) {
   const splitSlug = slug.split('-')

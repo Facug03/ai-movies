@@ -1,6 +1,14 @@
+import { Metadata } from 'next'
+
 import SearchForm from '@/app/search/sections/search-form'
 import MediaGrid from '@/components/media-grid'
 import { getAll } from '@/services/all'
+
+export const metadata: Metadata = {
+  title: 'Search - aiMovies',
+  description:
+    'Web to see movies, animes or series information, images and videos. You can use our integrated IA to improve your experienced.'
+}
 
 export default async function Search() {
   const [error, data] = await getAll('trending')

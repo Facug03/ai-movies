@@ -1,5 +1,12 @@
+import { Metadata } from 'next'
+
 import MediaPage from '@/app/(categories)/components/media-page'
 import { getSeries, getSeriesGenres } from '@/services/series'
+
+export const metadata: Metadata = {
+  title: 'Anime series - aiMovies',
+  description: 'Here you can find all series divided by genre, look for the best series on aiMovies.'
+}
 
 export default async function AnimesSeries() {
   const [errorMovie, dataAnime, url] = await getSeries({

@@ -1,8 +1,32 @@
+import { Metadata } from 'next'
+
 import MediaPage from '@/app/(categories)/components/media-page'
 import { getSeries, getSeriesGenres } from '@/services/series'
 import { slugify } from '@/utils/slugify'
 
-export default async function AnimesSeriesGenres({ params: { slug } }: { params: { slug: string } }) {
+interface Props {
+  params: {
+    slug: string
+  }
+}
+
+export async function generateMetadata({ params: { slug } }: Props): Promise<Metadata> {
+  const splitSlug = slug.split('-')
+  const [errorGenre, dataGenre] = await getSeriesGenres()
+
+  if (errorGenre) {
+    throw errorGenre
+  }
+
+  const genre = dataGenre.genres.find((genre) => genre.id === Number(splitSlug[splitSlug.length - 1]))?.name
+
+  return {
+    title: `${genre} anime series - AiMovies`,
+    description: `Find all anime series of ${genre}.`
+  }
+}
+
+export default async function AnimesSeriesGenres({ params: { slug } }: Props) {
   const splitSlug = slug.split('-')
   const [errorMovie, dataMovie, url] = await getSeries({
     type: 'anime',

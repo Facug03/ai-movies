@@ -6,6 +6,7 @@ import SliderVideos from '@/app/(details)/sections/slider-videos'
 import { getSeries } from '@/app/(details)/tv/services/series'
 import SliderClient from '@/sections/slider/slider-client'
 import MediaInfo from '../../components/media-info'
+import { Metadata } from 'next'
 
 // const getCachedMovie = unstable_cache(
 //   async (id: number) =>
@@ -15,7 +16,31 @@ import MediaInfo from '../../components/media-info'
 //   ['movie-detail']
 // )
 
-export default async function Series({ params: { slug } }: { params: { slug: string } }) {
+interface Props {
+  params: {
+    slug: string
+  }
+}
+
+export async function generateMetadata({ params: { slug } }: Props): Promise<Metadata> {
+  const splitSlug = slug.split('-')
+  const [errorSeries, dataSeries] = await getSeries(Number(splitSlug[0]), {
+    language: 'en'
+  })
+
+  if (errorSeries) {
+    throw errorSeries
+  }
+
+  const releaseYear = dataSeries.releaseDate?.split('-')[0]
+
+  return {
+    title: `${dataSeries.title} ${releaseYear ? `(${releaseYear}) ` : ''}- aiMovies`,
+    description: dataSeries.overview
+  }
+}
+
+export default async function Series({ params: { slug } }: Props) {
   const splitSlug = slug.split('-')
   // const [errorMovie, dataSeries] = await getCachedMovie(Number(splitSlug[0]))
   const [errorSeries, dataSeries] = await getSeries(Number(splitSlug[0]), {
