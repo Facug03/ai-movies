@@ -2,6 +2,7 @@ import { Data } from '@/types/api-movie-db/all'
 import { Media } from '@/types/media'
 import { SearchResults } from '@/types/search'
 import { apis } from './api'
+import { config } from '@/config'
 
 export const getAll = async (type: keyof typeof apis.all): Promise<[null, Media[]] | [Error, null]> => {
   try {
@@ -9,8 +10,7 @@ export const getAll = async (type: keyof typeof apis.all): Promise<[null, Media[
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMzA5MmUxNzhjZmIzMjRhYTY1OGI3NGZmZDExMWY1MiIsIm5iZiI6MTcyMTE3NzY4MS4wMjEwNjIsInN1YiI6IjY2OTE1MTAzNjM2YzQyN2EwNzllMjZjZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rUzH7x6w74nmTOT5ioSc2_ZQ1795NK1BFsim7UeovVw'
+        Authorization: `Bearer ${config.MOVIE_API_KEY}`
       }
     })
 
@@ -51,8 +51,7 @@ export const searchAll = async (url: string): Promise<SearchResults> => {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMzA5MmUxNzhjZmIzMjRhYTY1OGI3NGZmZDExMWY1MiIsIm5iZiI6MTcyMTE3NzY4MS4wMjEwNjIsInN1YiI6IjY2OTE1MTAzNjM2YzQyN2EwNzllMjZjZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rUzH7x6w74nmTOT5ioSc2_ZQ1795NK1BFsim7UeovVw'
+      Authorization: `Bearer ${config.MOVIE_API_KEY}`
     }
   })
 

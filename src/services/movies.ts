@@ -5,6 +5,7 @@ import { Media } from '@/types/media'
 import { applyFilters } from '@/utils/apply-filters'
 import { ApiResponse, apis } from './api'
 import { formatMovies } from '@/utils/format'
+import { config } from '@/config'
 
 export const getMovies = async ({
   type,
@@ -25,8 +26,7 @@ export const getMovies = async ({
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMzA5MmUxNzhjZmIzMjRhYTY1OGI3NGZmZDExMWY1MiIsIm5iZiI6MTcyMTE3NzY4MS4wMjEwNjIsInN1YiI6IjY2OTE1MTAzNjM2YzQyN2EwNzllMjZjZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rUzH7x6w74nmTOT5ioSc2_ZQ1795NK1BFsim7UeovVw'
+        Authorization: `Bearer ${config.MOVIE_API_KEY}`
       },
       next: { revalidate: 43200 }
     })
@@ -54,8 +54,7 @@ export const getMoviesGenres = async (): Promise<ApiResponse<Genres>> => {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMzA5MmUxNzhjZmIzMjRhYTY1OGI3NGZmZDExMWY1MiIsIm5iZiI6MTcyMTE3NzY4MS4wMjEwNjIsInN1YiI6IjY2OTE1MTAzNjM2YzQyN2EwNzllMjZjZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rUzH7x6w74nmTOT5ioSc2_ZQ1795NK1BFsim7UeovVw'
+        Authorization: `Bearer ${config.MOVIE_API_KEY}`
       }
     })
 
