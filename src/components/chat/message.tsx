@@ -49,5 +49,5 @@ export const Message = memo(
       </div>
     )
   },
-  (oldProps, newProps) => oldProps.message.content === newProps.message.content
+  (oldProps, newProps) => oldProps.message.content.length === newProps.message.content.length
 )
