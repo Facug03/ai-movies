@@ -26,7 +26,7 @@ export default async function Hero() {
         >
           <Image
             priority
-            src={imagesPath(movie.backdropPath, '1920x800')}
+            src={imagesPath(movie.backdropPath, 1280)}
             fill
             alt={`${movie.title} poster image`}
             className='mask-image-bg object-cover object-top opacity-25'

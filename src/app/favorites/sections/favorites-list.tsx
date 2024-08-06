@@ -25,6 +25,7 @@ export function FavoritesList() {
                     fill
                     alt={`${favorite.title} poster`}
                     className='rounded-lg object-cover'
+                    sizes='(min-width: 1024px) 12vw, (min-width: 768px) 18vw, (min-width: 640px) 22vw, 40vw'
                   />
                 ) : (
                   <div className='flex h-full w-full items-center justify-center rounded-lg bg-w-50'>

@@ -65,7 +65,7 @@ export default function SliderVideos({ videos }: Props) {
                   fill
                   alt='background images'
                   className='rounded-lg object-cover'
-                  sizes='(min-width: 1024px) 28%, (min-width: 640px) 40%, 70%'
+                  sizes='(min-width: 1024px) 28vw, (min-width: 640px) 40vw, 70vw'
                 />
 
                 <div

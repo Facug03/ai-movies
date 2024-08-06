@@ -34,7 +34,7 @@ export default function Hero(props: Props) {
           >
             <Image
               priority
-              src={imagesPath(mediaDetail.backdropPath, '1920x800')}
+              src={imagesPath(mediaDetail.backdropPath, 1280)}
               fill
               alt={`${mediaDetail.title} backdrop image`}
               className='mask-image-bg object-cover object-top opacity-25'
@@ -54,7 +54,7 @@ export default function Hero(props: Props) {
                 fill
                 alt={`${mediaDetail.title} poster`}
                 className='rounded-lg object-contain'
-                sizes='(min-width: 1024px) 12vw, (min-width: 768px) 18vw, (min-width: 640px) 22vw, 50vw'
+                sizes='(min-width: 768px) 18vw, (min-width: 640px) 22vw, 50vw'
               />
             ) : (
               <div className='flex h-full w-full items-center justify-center rounded-lg bg-w-50'>
@@ -126,7 +126,7 @@ export default function Hero(props: Props) {
         >
           <Image
             priority
-            src={imagesPath(mediaDetail.backdropPath, '1920x800')}
+            src={imagesPath(mediaDetail.backdropPath, 1280)}
             fill
             alt={`${mediaDetail.title} backgrop image`}
             className='mask-image-bg object-cover object-top opacity-25'
@@ -146,7 +146,7 @@ export default function Hero(props: Props) {
               fill
               alt={`${mediaDetail.title} poster`}
               className='rounded-lg object-contain'
-              sizes='(min-width: 1024px) 12vw, (min-width: 768px) 18vw, (min-width: 640px) 22vw, 50vw'
+              sizes='(min-width: 768px) 18vw, (min-width: 640px) 22vw, 50vw'
             />
           ) : (
             <div className='flex h-full w-full items-center justify-center rounded-lg bg-w-50'>
