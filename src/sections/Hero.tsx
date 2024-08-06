@@ -19,19 +19,21 @@ export default async function Hero() {
 
   return (
     <section className='relative mb-16 mt-8 flex flex-col sm:mb-28 sm:mt-10'>
-      <div
-        className='absolute -top-20 left-[calc(50%-50vw)] -z-10 h-[calc(100%+3rem+2rem+4rem)] w-screen sm:-top-[5.5rem]
-          sm:h-[calc(100%+3rem+2.5rem+7rem)]'
-      >
-        <Image
-          priority
-          src={imagesPath(movie.backdropPath, '1920x800')}
-          fill
-          alt={`${movie.title} poster image`}
-          className='mask-image-bg object-cover object-top opacity-25'
-          sizes='100vw'
-        />
-      </div>
+      {movie.backdropPath && (
+        <div
+          className='absolute -top-20 left-[calc(50%-50vw)] -z-10 h-[calc(100%+3rem+2rem+4rem)] w-screen sm:-top-[5.5rem]
+            sm:h-[calc(100%+3rem+2.5rem+7rem)]'
+        >
+          <Image
+            priority
+            src={imagesPath(movie.backdropPath, '1920x800')}
+            fill
+            alt={`${movie.title} poster image`}
+            className='mask-image-bg object-cover object-top opacity-25'
+            sizes='100vw'
+          />
+        </div>
+      )}
 
       <h1 className='text-m-t1 font-bold text-w sm:text-t1'>{movie.title}</h1>
       <p className='mb-3 line-clamp-3 max-w-[50em] text-m-t7 text-w sm:mb-7 sm:line-clamp-none sm:text-t7'>

@@ -19,7 +19,7 @@ export function FavoritesList() {
           return (
             <article key={favorite.id} className='flex animate-fade-in items-center gap-2'>
               <div className='relative aspect-[16/9] h-auto w-[40vw] flex-shrink-0 shadow-xl sm:w-[22vw] md:w-[18vw] lg:w-[12vw]'>
-                {favorite.posterPath ? (
+                {favorite.backdropPath ? (
                   <Image
                     src={imagesPath(favorite.backdropPath, '533x300')}
                     fill
