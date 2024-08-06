@@ -15,6 +15,7 @@ import MediaInfo from '../../components/media-info'
 //     }),
 //   ['movie-detail']
 // )
+export const runtime = 'edge'
 
 interface Props {
   params: {
