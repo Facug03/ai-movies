@@ -1,14 +1,15 @@
-import Button from '@/components/Button'
+import Image from 'next/image'
+
 import ButtonAssistant from '@/components/ButtonAssistant'
-import Heart from '@/components/icons/Heart'
 import Img from '@/components/icons/Img'
 import Like from '@/components/icons/Like'
 import Star from '@/components/icons/Star'
 import { MovieDetail } from '@/types/movieDetail'
 import { SeriesDetail } from '@/types/seriesDetail'
+import { formatMovieDetail, formatSeriesDetail } from '@/utils/format'
 import { imagesPath } from '@/utils/images'
+import { SaveFavorites } from '../components/SaveFavorites'
 import { numberToHour } from '@/utils/numberToHour'
-import Image from 'next/image'
 
 type Props =
   | {
@@ -93,7 +94,7 @@ export default function Hero(props: Props) {
             </p>
 
             <div className='flex flex-col gap-3 sm:flex-row'>
-              <Button text='Add to favorites' type='primary' icon={<Heart styles='w-6 h-6 text-b' />} />
+              <SaveFavorites media={formatSeriesDetail(mediaDetail)} />
               <ButtonAssistant
                 type='info'
                 buttonText='More info'
@@ -178,7 +179,7 @@ export default function Hero(props: Props) {
           </p>
 
           <div className='flex flex-col gap-3 sm:flex-row'>
-            <Button text='Add to favorites' type='primary' icon={<Heart styles='w-6 h-6 text-b' />} />
+            <SaveFavorites media={formatMovieDetail(mediaDetail)} />
             <ButtonAssistant
               type='info'
               buttonText='More info'
