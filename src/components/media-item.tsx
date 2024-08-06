@@ -22,7 +22,7 @@ export default function MediaItem({ media, type, animate }: Props) {
       <article className={`${animate ? 'animate-fade-in duration-75' : ''} relative`}>
         <ButtonAssistant type='item' title={media.title} mediaType={media.type ?? 'Movie'} />
 
-        <Link href={href}>
+        <Link href={href} prefetch={false}>
           <div className='relative mb-3 aspect-[2/3] h-auto w-[27vw] rounded-lg sm:w-[22vw] md:w-[18vw] lg:w-[14vw] xl:w-full'>
             {media.posterPath ? (
               <Image
@@ -57,7 +57,7 @@ export default function MediaItem({ media, type, animate }: Props) {
     <article className='embla-slide relative mr-3 flex-[0_0_27%] sm:flex-[0_0_22%] md:flex-[0_0_16%] lg:flex-[0_0_12%]'>
       <ButtonAssistant type='item' title={media.title} mediaType={media.type ?? 'Movie'} />
 
-      <Link href={href}>
+      <Link href={href} prefetch={false}>
         <div className='relative mb-3 aspect-[2/3] h-auto w-full rounded-lg'>
           {media.posterPath ? (
             <Image
