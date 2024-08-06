@@ -4,7 +4,7 @@ import { pages } from '@/consts/pages'
 
 export function Footer() {
   return (
-    <footer className='mt-8 w-full max-w-[86.25rem] rounded-lg bg-neutral-800 px-6 py-3'>
+    <footer className='my-8 w-full max-w-[86.25rem] rounded-lg bg-neutral-800 px-6 py-3'>
       <Link href='/' className='mb-8 block text-m-t7 font-bold text-w'>
         <span className='text-primary'>AI</span>MOVIES
       </Link>
