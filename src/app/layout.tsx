@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import { Schibsted_Grotesk } from 'next/font/google'
 
 import ButtonAssistant from '@/components/button-assistant'
-import AllChats from '@/components/chat/all-chats'
 import { ChatStoreProvider } from '@/providers/chat-store-provider'
 import Header from '@/sections/header'
+import { Chats } from '@/sections/chats'
 import './globals.css'
 
 const schibstedGrotesk = Schibsted_Grotesk({ subsets: ['latin'] })
@@ -32,7 +32,7 @@ export default function RootLayout({
           <Header />
           <main className='w-full max-w-[86.25rem]'>{children}</main>
           <ButtonAssistant type='general' mediaType='Movie' title='General' />
-          <AllChats />
+          <Chats />
         </ChatStoreProvider>
       </body>
     </html>
