@@ -1,6 +1,6 @@
 interface Props {
   type: 'primary' | 'secondary'
-  text: string
+  text: React.ReactNode
   icon?: JSX.Element
   onClick?: () => void
 }
