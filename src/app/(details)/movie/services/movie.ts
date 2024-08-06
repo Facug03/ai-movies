@@ -1,3 +1,4 @@
+import { config } from '@/config'
 import { ApiResponse, apis } from '@/services/api'
 import { DataMovieDetail } from '@/types/api-movie-db/movie-detail'
 import { MovieFilters } from '@/types/filters'
@@ -23,8 +24,7 @@ export const getMovie = async (
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMzA5MmUxNzhjZmIzMjRhYTY1OGI3NGZmZDExMWY1MiIsIm5iZiI6MTcyMTE3NzY4MS4wMjEwNjIsInN1YiI6IjY2OTE1MTAzNjM2YzQyN2EwNzllMjZjZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rUzH7x6w74nmTOT5ioSc2_ZQ1795NK1BFsim7UeovVw'
+        Authorization: `Bearer ${config.MOVIE_API_KEY}`
       },
       next: {
         revalidate: 3600,
