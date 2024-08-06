@@ -10,7 +10,7 @@ import Close from '@/components/icons/Close'
 import { useFavorites } from '@/hooks/use-favorites'
 import { useChatStore } from '@/providers/chat-store-provider'
 import { generateFavoritesSystemPropmts } from '@/utils/propmts'
-import Message from './message'
+import { Message } from './message'
 import TabsSlider from './tabs-slider'
 
 interface Props {

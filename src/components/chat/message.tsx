@@ -1,5 +1,6 @@
 'use client'
 
+import { memo } from 'react'
 import { Message as MessageAi } from 'ai'
 import Markdown from 'markdown-to-jsx'
 
@@ -9,7 +10,7 @@ interface Props {
   message: MessageAi
 }
 
-export default function Message({ message }: Props) {
+export const Message = memo(function Message({ message }: Props) {
   if (message.role !== 'user' && message.role !== 'assistant') return
 
   if (message.role === 'user') {
@@ -45,4 +46,4 @@ export default function Message({ message }: Props) {
       </Markdown>
     </div>
   )
-}
+})
