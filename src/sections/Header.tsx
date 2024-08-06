@@ -50,16 +50,14 @@ export default function Header() {
             ))}
           </div>
         </div>
-
         <div className='hidden md:flex md:gap-6'>
-          <a className='text-m-t7 text-w sm:text-t7'>Favorites</a>
-          <a className='text-m-t7 text-w sm:text-t7'>Dark</a>
+          <StyledLink href='/favorites'>Favorites</StyledLink>
         </div>
-
         <button className='block md:hidden' aria-label='Menu' onClick={showMenu}>
           <Menu styles='h-6 w-6 stroke-w' />
         </button>
 
+        {/* mobile */}
         <div
           ref={ref}
           className='pointer-events-none fixed inset-0 z-10 w-screen items-center bg-b px-[6px] py-3 !opacity-0 transition-opacity
@@ -85,6 +83,10 @@ export default function Header() {
                 <hr className='border-t-1 h-[2px] w-3/4 border-w' />
               </div>
             ))}
+            <StyledLink href='/favorites' onClick={hideMenu}>
+              Favorites
+            </StyledLink>
+            <hr className='border-t-1 h-[2px] w-3/4 border-w' />
           </nav>
         </div>
       </nav>
