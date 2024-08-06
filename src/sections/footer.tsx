@@ -1,15 +1,8 @@
-'use client'
-
-import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
 import { pages } from '@/consts/pages'
 
 export function Footer() {
-  const pathname = usePathname()
-
-  if (pathname !== '/') return null
-
   return (
     <footer className='mt-8 w-full max-w-[86.25rem] rounded-lg bg-neutral-800 px-6 py-3'>
       <Link href='/' className='mb-8 block text-m-t6 font-bold text-w'>
@@ -61,5 +54,3 @@ export function Footer() {
     </footer>
   )
 }
-
-// This product uses the TMDB API but is not endorsed or certified by TMDB.
