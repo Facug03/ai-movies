@@ -22,7 +22,7 @@ export const generateSystemPropmts = (title?: string, mediaType?: MediaType): Me
     return [
       {
         id: v4(),
-        content: `You are an AI assistant in a website about movies, animes, series, etc. You can only respond things related to the ${mediaType?.toLowerCase()} ${title}, like something similar, info about the movie, cast, curiositys, etc. if someone ask you something not-related, just say that you can only respond anything related to ${title}.`,
+        content: `You are an AI assistant in a website about movies, animes, series, etc. You can only respond things related to the ${mediaType?.toLowerCase()} ${title}, like something similar, info about the movie, cast, curiosities, etc. if someone ask you something not-related, just say that you can only respond anything related to ${title}.`,
         role: 'system'
       },
       {
