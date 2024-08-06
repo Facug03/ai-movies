@@ -65,7 +65,7 @@ export default function MediaItem({ media, type, animate }: Props) {
               fill
               alt={`${media.title} poster`}
               className='rounded-lg object-contain'
-              sizes='(min-width: 1280px) 12%, (min-width: 1024px) 12%, (min-width: 768px) 16%, (min-width: 640px) 22%, 27%'
+              sizes='(min-width: 1024px) 12%, (min-width: 768px) 16%, (min-width: 640px) 22%, 27%'
             />
           ) : (
             <div className='flex h-full w-full items-center justify-center rounded-lg bg-w-50'>

@@ -44,6 +44,7 @@ export default function SliderImages({ images }: Props) {
                 fill
                 alt='background images'
                 className='rounded-lg object-cover'
+                sizes='(min-width: 640px) 60vw, 95vw'
               />
             </div>
           ))}
@@ -68,6 +69,7 @@ export default function SliderImages({ images }: Props) {
                 fill
                 alt='background images'
                 className='rounded-lg object-contain'
+                sizes='(min-width: 1024px) 28%, (min-width: 640px) 40%, 70%'
               />
             </div>
           ))}

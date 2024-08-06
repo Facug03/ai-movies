@@ -54,6 +54,7 @@ export default function Hero(props: Props) {
                 fill
                 alt={`${mediaDetail.title} poster`}
                 className='rounded-lg object-contain'
+                sizes='(min-width: 1024px) 12vw, (min-width: 768px) 18vw, (min-width: 640px) 22vw, 50vw'
               />
             ) : (
               <div className='flex h-full w-full items-center justify-center rounded-lg bg-w-50'>
@@ -145,6 +146,7 @@ export default function Hero(props: Props) {
               fill
               alt={`${mediaDetail.title} poster`}
               className='rounded-lg object-contain'
+              sizes='(min-width: 1024px) 12vw, (min-width: 768px) 18vw, (min-width: 640px) 22vw, 50vw'
             />
           ) : (
             <div className='flex h-full w-full items-center justify-center rounded-lg bg-w-50'>
