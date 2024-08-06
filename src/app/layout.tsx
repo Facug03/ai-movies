@@ -12,7 +12,10 @@ const schibstedGrotesk = Schibsted_Grotesk({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'aiMovies',
   description:
-    'Web to see movies, animes or series information, images and videos. You can use our integrated IA to improve your experienced.'
+    'Web to see movies, animes or series information, images and videos. You can use our integrated IA to improve your experienced.',
+  icons: {
+    icon: '/icon.png'
+  }
 }
 
 export default function RootLayout({
