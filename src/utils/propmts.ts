@@ -1,7 +1,21 @@
 import { Message } from 'ai'
 import { v4 } from 'uuid'
 
-import { MediaType } from '@/types/media'
+import { Media, MediaType } from '@/types/media'
+
+export const generateFavoritesSystemPropmts = (favorites: Media[]): Message[] => {
+  if (favorites.length === 0) return []
+
+  return [
+    {
+      role: 'system',
+      content: favorites?.length
+        ? `Here are my favorites: ${favorites.map((favorites) => `${favorites.title}-(${favorites.type})`).join(', ')}`
+        : 'I have no favorites yet',
+      id: v4()
+    }
+  ]
+}
 
 export const generateSystemPropmts = (title?: string, mediaType?: MediaType): Message[] => {
   if (title) {

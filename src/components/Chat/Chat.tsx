@@ -10,17 +10,20 @@ import Close from '@/components/icons/Close'
 import { useChatStore } from '@/providers/chat-store-provider'
 import Message from './Message'
 import TabsSlider from './TabsSlider'
+import { useFavorites } from '@/hooks/use-favorites'
+import { generateFavoritesSystemPropmts } from '@/utils/propmts'
 
 interface Props {
   id: string
 }
 
 export default function Chat({ id }: Props) {
+  const { favorites } = useFavorites()
   const { chats, toggleMinimize, closeChat } = useChatStore((state) => state)
   const { minimized, systemPrompt, title, mediaType } = chats.find((chat) => chat.id === id) ?? {}
   const { messages, input, handleInputChange, handleSubmit, error, isLoading, setMessages, reload, setInput } = useChat(
     {
-      initialMessages: systemPrompt ?? []
+      initialMessages: [...generateFavoritesSystemPropmts(favorites ?? []), ...(systemPrompt ?? [])]
     }
   )
   const refMessages = useRef<HTMLDivElement | null>(null)
