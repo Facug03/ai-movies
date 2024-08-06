@@ -12,7 +12,9 @@ import { apis } from '@/services/api'
 import { SearchResults } from '@/types/search'
 
 export default function SearchForm() {
-  const { data, query, setQuery, refGrid, reachEnd, ref } = useSearch()
+  const { data, query, setQuery, refGrid, reachEnd, ref, isLoading } = useSearch()
+
+  console.log(Boolean(!data?.length), data)
 
   return (
     <>
@@ -29,6 +31,13 @@ export default function SearchForm() {
       <div className='hide-element' ref={refGrid}>
         {Boolean(data?.length) && <MediaGrid mediaContent={data?.map((m) => m.data).flat() ?? []} />}
 
+        {Boolean(!(data?.map((m) => m.data).flat() ?? []).length) && !isLoading && (
+          <>
+            <h2 className='text-center text-m-t3 font-bold text-w sm:text-t3'>No results found</h2>
+            <p className='text-center text-m-t6 text-w-75 sm:text-t6'>Try searching with the AI assistant</p>
+          </>
+        )}
+
         {!reachEnd && data?.length && (
           <div className='flex w-full justify-center py-3' ref={ref}>
             <Spinner styles='h-10 w-10 animate-spin fill-primary text-gray-200' />
@@ -43,7 +52,7 @@ function useSearch() {
   const [query, setQuery] = useState('')
   const debounceQuery = useDebounce(query, 300)
   const refGrid = useRef<HTMLDivElement | null>(null)
-  const { data, setSize } = useSWRInfinite(
+  const { data, setSize, isLoading } = useSWRInfinite(
     (page, previousData: SearchResults) => {
       if (debounceQuery.length === 0) return null
 
@@ -98,6 +107,7 @@ function useSearch() {
     setQuery,
     refGrid,
     reachEnd,
-    ref
+    ref,
+    isLoading
   }
 }
