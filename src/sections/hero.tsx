@@ -40,7 +40,7 @@ export default async function Hero() {
         {movie.overview}
       </p>
 
-      <div className='flex flex-col gap-3 sm:flex-row sm:gap-6'>
+      <div className='flex flex-wrap gap-3 sm:gap-6'>
         <CustomLink
           href={`/movie/${movie.id}#section-videos`}
           text='Watch trailer'
