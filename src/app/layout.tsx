@@ -1,3 +1,4 @@
+import Script from 'next/script'
 import type { Metadata } from 'next'
 import { Schibsted_Grotesk } from 'next/font/google'
 
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   description:
     'Web to see movies, animes or series information, images and videos. You can use our integrated IA to improve your experienced.',
   icons: {
-    icon: '/icon.png'
+    icon: '/icon.svg'
   }
 }
 
@@ -34,6 +35,12 @@ export default function RootLayout({
           <ButtonAssistant type='general' mediaType='Movie' title='General' />
           <AllChats />
         </ChatStoreProvider>
+        <Script
+          strategy='afterInteractive'
+          defer
+          src='https://static.cloudflareinsights.com/beacon.min.js'
+          data-cf-beacon='{"token": "47630709139f42abbe31c69259d72530"}'
+        />
       </body>
     </html>
   )
