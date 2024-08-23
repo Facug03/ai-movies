@@ -1,7 +1,10 @@
 'use client'
 
+import dynamic from 'next/dynamic'
+
 import { useChatStore } from '@/providers/chat-store-provider'
-import Chat from './chat'
+
+const Chat = dynamic(() => import('./chat'))
 
 export default function AllChats() {
   const chats = useChatStore((state) => state.chats)
