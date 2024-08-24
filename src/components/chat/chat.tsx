@@ -58,8 +58,6 @@ export default function Chat({ id }: Props) {
     })
   }, [])
 
-  console.log('messages', messages)
-
   return (
     <Draggable
       disabled={isMobile || fullSize}

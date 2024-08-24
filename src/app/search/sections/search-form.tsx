@@ -14,8 +14,6 @@ import { SearchResults } from '@/types/search'
 export default function SearchForm() {
   const { data, query, setQuery, refGrid, reachEnd, ref, isLoading } = useSearch()
 
-  console.log(Boolean(!data?.length), data)
-
   return (
     <>
       <form className='mb-16' role='search' onSubmit={(e) => e.preventDefault()}>
