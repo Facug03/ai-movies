@@ -8,7 +8,10 @@ import { ChatStoreProvider } from '@/providers/chat-store-provider'
 import Header from '@/sections/header'
 import './globals.css'
 
-const schibstedGrotesk = Schibsted_Grotesk({ subsets: ['latin'] })
+const schibstedGrotesk = Schibsted_Grotesk({
+  subsets: ['latin'],
+  display: 'swap'
+})
 
 export const metadata: Metadata = {
   title: 'aiMovies',
@@ -25,10 +28,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='en'>
-      <body
-        className={`${schibstedGrotesk.className} flex flex-col items-center overflow-x-hidden bg-b px-[0.375rem] sm:px-2 lg:px-3`}
-      >
+    <html lang='en' className={schibstedGrotesk.className}>
+      <body className='flex flex-col items-center overflow-x-hidden bg-b px-[0.375rem] sm:px-2 lg:px-3'>
         <ChatStoreProvider>
           <Header />
           <main className='w-full max-w-[86.25rem]'>{children}</main>
