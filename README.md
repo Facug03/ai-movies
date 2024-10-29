@@ -1,6 +1,8 @@
 
 # aiMovies
 
+![757shots_so](https://github.com/user-attachments/assets/a8d5f87d-d8d6-43be-bde9-182f3e51551b)
+
 **aiMovies** es una web donde podés encontrar toda clase de información, recomendaciones y curiosidades sobre peliculas, series y animes,
 
 Con nuestro asistente integrado y con nuestro sistema de pestañás podés interactuar con multiples chats, encontrar peliculas con el sistema de recomendaciones basado en tus favoritos y encontrar información adicional facilmente.
