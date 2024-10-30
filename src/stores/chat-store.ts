@@ -135,9 +135,7 @@ export const createChatStore = (initState: ChatState = defaultInitState) => {
           isFullSize: newFullSize
         }
 
-        if (newFullSize) {
-          document.body.classList.add('overflow-hidden')
-        }
+        newFullSize ? document.body.classList.add('overflow-hidden') : document.body.classList.remove('overflow-hidden')
 
         return { chats: [...chats] }
       }),
