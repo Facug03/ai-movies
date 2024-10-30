@@ -36,8 +36,8 @@ export default function ButtonAssistant({ type, title, mediaType, buttonText = '
     return (
       <div className='absolute right-1 top-1 z-10'>
         <button
-          className='flex h-8 w-8 items-center justify-center rounded-full bg-primary transition-all ease-in-out active:scale-110
-            active:bg-primary-80 md:hover:scale-110 md:hover:bg-primary-80'
+          className='flex h-8 w-8 items-center justify-center rounded-full bg-primary-80 transition-all ease-in-out active:scale-110
+            active:bg-primary md:hover:scale-110 md:hover:bg-primary md:hover:opacity-100'
           onClick={() => {
             addChat(id.current, title, mediaType)
           }}
@@ -56,7 +56,7 @@ export default function ButtonAssistant({ type, title, mediaType, buttonText = '
             <button
               key={chat.id}
               className={`${
-                chat.minimized || !chat.isOpen
+            chat.minimized || !chat.isOpen
                   ? 'group border-w-75 bg-b text-w-75 active:bg-primary md:hover:border-primary md:hover:bg-primary md:hover:text-b'
                   : `border-primary bg-primary text-b active:border-primary-80 active:bg-primary-80 md:hover:border-primary-80
                     md:hover:bg-primary-80`
