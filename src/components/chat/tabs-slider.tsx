@@ -18,7 +18,7 @@ interface Props {
 
 export default function TabsSlider(props: Props) {
   const [emblaRef] = useEmblaCarousel({
-    loop: true,
+    loop: false,
     slidesToScroll: 'auto',
     dragFree: true,
     align: 'center'
