@@ -19,8 +19,8 @@ interface Props {
 
 export default function Chat({ id }: Props) {
   const { favorites } = useFavorites()
-  const { chats, toggleMinimize, closeChat } = useChatStore((state) => state)
-  const { minimized, systemPrompt, title, mediaType } = chats.find((chat) => chat.id === id) ?? {}
+  const { chats, toggleMinimize, closeChat, toggleFullSize } = useChatStore((state) => state)
+  const { minimized, systemPrompt, title, mediaType, isFullSize } = chats.find((chat) => chat.id === id) ?? {}
   const { messages, input, handleInputChange, handleSubmit, error, isLoading, setMessages, reload, setInput } = useChat(
     {
       initialMessages: [...generateFavoritesSystemPropmts(favorites ?? []), ...(systemPrompt ?? [])]
@@ -32,57 +32,62 @@ export default function Chat({ id }: Props) {
 
     return !window.matchMedia('(min-width: 768px)').matches
   })
-  const [fullSize, setFullSize] = useState(isMobile)
   const [dragging, setDragging] = useState(false)
 
   useEffect(() => {
-    if (isLoading) {
-      refMessages.current?.scrollTo({
-        top: refMessages.current?.scrollHeight,
-        behavior: 'smooth'
-      })
-    }
-  })
+    const mediaQuery = window.matchMedia('(min-width: 768px)')
 
-  useEffect(() => {
-    if (fullSize && !minimized) {
-      document.body.classList.add('overflow-hidden')
-    } else {
-      document.body.classList.remove('overflow-hidden')
+    if (!mediaQuery.matches) {
+      toggleFullSize(id, true)
     }
-  }, [fullSize, minimized])
 
-  useEffect(() => {
-    window.matchMedia('(min-width: 768px)').addEventListener('change', (e) => {
+    const handleChange = (e: MediaQueryListEvent) => {
       setIsMobile(!e.matches)
+
+      if (!e.matches) {
+        toggleFullSize(id, true)
+      }
+    }
+
+    mediaQuery.addEventListener('change', handleChange)
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleChange)
+    }
+  }, [toggleFullSize, id])
+
+  if (isLoading) {
+    refMessages.current?.scrollTo({
+      top: refMessages.current?.scrollHeight,
+      behavior: 'smooth'
     })
-  }, [])
+  }
 
   return (
     <Draggable
-      disabled={isMobile || fullSize}
+      disabled={isMobile || isFullSize}
       handle='header'
       bounds='html'
       onStart={() => setDragging(true)}
       onStop={() => setDragging(false)}
-      position={fullSize ? { x: 0, y: 0 } : undefined}
+      position={isFullSize ? { x: 0, y: 0 } : undefined}
     >
       <div
         className={`fixed z-50 cursor-auto rounded-lg bg-b ease-in-out ${dragging ? '' : '[transition:opacity_0.2s,transform_0.2s]'}
-          ${fullSize ? 'bottom-0 right-0 h-dvh w-screen duration-500' : 'bottom-20 right-4 w-[21rem] min-w-[21rem] border-[1px] border-w-50'}
+          ${isFullSize ? 'bottom-0 right-0 h-dvh w-screen duration-500' : 'bottom-20 right-4 w-[21rem] min-w-[21rem] border-[1px] border-w-50'}
           ${minimized ? 'minimized' : ''}`}
       >
         <div className='mx-auto flex h-full max-w-3xl flex-col justify-between py-2'>
-          <div className={`${fullSize ? 'text-t6 md:text-t6' : 'text-t7 md:text-t7'}`}>
+          <div className={`${isFullSize ? 'text-t6 md:text-t6' : 'text-t7 md:text-t7'}`}>
             <header
-              className={`mb-4 flex items-center justify-between px-2 ${fullSize ? 'cursor-auto' : 'cursor-move'}`}
+              className={`mb-4 flex items-center justify-between px-2 ${isFullSize ? 'cursor-auto' : 'cursor-move'}`}
             >
               <div className='overflow-hidden'>
-                <h4 className={`font-bold text-w ${fullSize ? 'text-m-t4 md:text-t4' : 'text-m-t5 md:text-t5'}`}>
+                <h4 className={`font-bold text-w ${isFullSize ? 'text-m-t4 md:text-t4' : 'text-m-t5 md:text-t5'}`}>
                   Assistant
                 </h4>
                 <h5
-                  className={`font-bold text-w-75 ${fullSize ? 'text-m-t5 md:text-t5' : 'text-m-t7 md:text-t7'} overflow-hidden text-ellipsis
+                  className={`font-bold text-w-75 ${isFullSize ? 'text-m-t5 md:text-t5' : 'text-m-t7 md:text-t7'} overflow-hidden text-ellipsis
                     whitespace-nowrap`}
                 >
                   {title}
@@ -93,16 +98,20 @@ export default function Chat({ id }: Props) {
                 <button
                   aria-label='Minimize'
                   className='mr-1 h-4 w-4 hover:opacity-60'
-                  onClick={() => toggleMinimize(id)}
+                  onClick={() => {
+                    toggleMinimize(id)
+
+                    if (isFullSize) document.body.classList.remove('overflow-hidden')
+                  }}
                 >
                   <div className='h-1 w-4 border-b-2 border-primary opacity-80' />
                 </button>
                 {!isMobile && (
                   <button
-                    onClick={() => setFullSize(!fullSize)}
+                    onClick={() => toggleFullSize(id)}
                     className='relative h-4 w-4 text-t5 text-primary hover:opacity-60'
                   >
-                    {fullSize ? (
+                    {isFullSize ? (
                       <>
                         <div className='absolute left-1/2 top-1/2 z-10 h-3 w-3 -translate-x-1/2 -translate-y-1/3 border-2 border-primary bg-b opacity-80' />
                         <div className='absolute left-2/3 top-1/3 h-3 w-3 -translate-x-1/2 -translate-y-1/3 border-2 border-primary opacity-80' />
@@ -112,14 +121,7 @@ export default function Chat({ id }: Props) {
                     )}
                   </button>
                 )}
-                <button
-                  aria-label='Close'
-                  className='hover:opacity-60'
-                  onClick={() => {
-                    document.body.classList.remove('overflow-hidden')
-                    closeChat(id)
-                  }}
-                >
+                <button aria-label='Close' className='hover:opacity-60' onClick={() => closeChat(id)}>
                   <Close styles='w-5 h-5 fill-primary' />
                 </button>
               </div>
@@ -135,7 +137,7 @@ export default function Chat({ id }: Props) {
 
             <div
               ref={refMessages}
-              className={`flex flex-col gap-3 overflow-y-auto px-2 py-4 ${fullSize ? 'h-[calc(100dvh-12.125rem)]' : 'h-80'}`}
+              className={`flex flex-col gap-3 overflow-y-auto px-2 py-4 ${isFullSize ? 'h-[calc(100dvh-12.125rem)]' : 'h-80'}`}
             >
               {messages.map((m, index) => {
                 if (messages.length - 1 === index) {
@@ -158,11 +160,11 @@ export default function Chat({ id }: Props) {
           </div>
 
           <form
-            className={`mx-2 flex items-center justify-between gap-1 bg-w-10 ${fullSize ? 'rounded-xl px-4 py-2' : 'rounded-lg px-2 py-1'}`}
+            className={`mx-2 flex items-center justify-between gap-1 bg-w-10 ${isFullSize ? 'rounded-xl px-4 py-2' : 'rounded-lg px-2 py-1'}`}
             onSubmit={handleSubmit}
           >
             <input
-              className={`w-full bg-transparent text-w outline-none ${fullSize ? 'text-m-t5 md:text-t5' : 'text-m-t7 sm:text-t7'}`}
+              className={`w-full bg-transparent text-w outline-none ${isFullSize ? 'text-m-t5 md:text-t5' : 'text-m-t7 sm:text-t7'}`}
               value={input}
               placeholder='Say something...'
               onChange={handleInputChange}

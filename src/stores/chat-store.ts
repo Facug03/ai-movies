@@ -14,6 +14,7 @@ export type ChatState = {
     systemPrompt: Message[]
     title: string
     mediaType: MediaType
+    isFullSize: boolean
   }[]
 }
 
@@ -21,6 +22,7 @@ export type ChatActions = {
   addChat: (id: string, title: string, mediaType: MediaType) => void
   closeChat: (id: string) => void
   toggleMinimize: (id: string) => void
+  toggleFullSize: (id: string, fullSize?: boolean) => void
 }
 
 export type ChatStore = ChatState & ChatActions
@@ -34,7 +36,8 @@ export const initChatStore = (): ChatState => {
         minimized: true,
         systemPrompt: generateSystemPropmts(),
         title: 'General',
-        mediaType: 'Movie'
+        mediaType: 'Movie',
+        isFullSize: false
       }
     ]
   }
@@ -63,8 +66,12 @@ export const createChatStore = (initState: ChatState = defaultInitState) => {
         if (chats[chatIndex]) {
           minimizeChats[chatIndex] = {
             ...minimizeChats[chatIndex],
-            minimized: !minimizeChats[chatIndex].minimized,
+            minimized: false,
             isOpen: true
+          }
+
+          if (minimizeChats[chatIndex].isFullSize) {
+            document.body.classList.add('overflow-hidden')
           }
 
           return { chats: [...minimizeChats] }
@@ -80,7 +87,8 @@ export const createChatStore = (initState: ChatState = defaultInitState) => {
                 isOpen: true,
                 systemPrompt: generateSystemPropmts(title, mediaType),
                 title,
-                mediaType
+                mediaType,
+                isFullSize: false
               }
             ]
           }
@@ -95,7 +103,8 @@ export const createChatStore = (initState: ChatState = defaultInitState) => {
               isOpen: true,
               systemPrompt: generateSystemPropmts(title, mediaType),
               title,
-              mediaType
+              mediaType,
+              isFullSize: false
             }
           ]
         }
@@ -104,24 +113,44 @@ export const createChatStore = (initState: ChatState = defaultInitState) => {
       set(({ chats }) => {
         const chatIndex = chats.findIndex((chat) => chat.id === id)
 
-        if (chats[chatIndex]) {
-          chats[chatIndex] = {
-            ...chats[chatIndex],
-            minimized: !chats[chatIndex].minimized
-          }
+        if (!chats[chatIndex]) return { chats: [...chats] }
 
-          return { chats: [...chats] }
+        chats[chatIndex] = {
+          ...chats[chatIndex],
+          minimized: !chats[chatIndex].minimized
+        }
+
+        return { chats: [...chats] }
+      }),
+    toggleFullSize: (id, fullSize) =>
+      set(({ chats }) => {
+        const chatIndex = chats.findIndex((chat) => chat.id === id)
+
+        if (!chats[chatIndex]) return { chats: [...chats] }
+
+        const newFullSize = fullSize ?? !chats[chatIndex].isFullSize
+
+        chats[chatIndex] = {
+          ...chats[chatIndex],
+          isFullSize: newFullSize
+        }
+
+        if (newFullSize) {
+          document.body.classList.add('overflow-hidden')
         }
 
         return { chats: [...chats] }
       }),
     closeChat: (id) =>
       set(({ chats }) => {
+        document.body.classList.remove('overflow-hidden')
+
         if (id === 'default') {
           chats[0] = {
             ...chats[0],
             isOpen: false,
-            minimized: false
+            minimized: true,
+            isFullSize: false
           }
 
           return { chats: [...chats] }
