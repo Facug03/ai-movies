@@ -1,7 +1,7 @@
 'use client'
 
 import { useChat } from 'ai/react'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Draggable from 'react-draggable'
 
 import Ai from '@/components/icons/Ai'
@@ -12,6 +12,7 @@ import { useChatStore } from '@/providers/chat-store-provider'
 import { generateFavoritesSystemPropmts } from '@/utils/propmts'
 import { Message, MemoMessage } from './message'
 import TabsSlider from './tabs-slider'
+import { useScrollToBottom } from '@/hooks/use-scroll-to-bottom'
 
 interface Props {
   id: string
@@ -26,13 +27,13 @@ export default function Chat({ id }: Props) {
       initialMessages: [...generateFavoritesSystemPropmts(favorites ?? []), ...(systemPrompt ?? [])]
     }
   )
-  const refMessages = useRef<HTMLDivElement | null>(null)
   const [isMobile, setIsMobile] = useState(() => {
     if (!window) return true
 
     return !window.matchMedia('(min-width: 768px)').matches
   })
   const [dragging, setDragging] = useState(false)
+  const [messagesContainerRef] = useScrollToBottom<HTMLDivElement>()
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 768px)')
@@ -55,13 +56,6 @@ export default function Chat({ id }: Props) {
       mediaQuery.removeEventListener('change', handleChange)
     }
   }, [toggleFullSize, id])
-
-  if (isLoading) {
-    refMessages.current?.scrollTo({
-      top: refMessages.current?.scrollHeight,
-      behavior: 'smooth'
-    })
-  }
 
   return (
     <Draggable
@@ -133,10 +127,11 @@ export default function Chat({ id }: Props) {
               title={title ?? ''}
               setMessages={setMessages}
               setInput={setInput}
+              isLoading={isLoading}
             />
 
             <div
-              ref={refMessages}
+              ref={messagesContainerRef}
               className={`flex flex-col gap-3 overflow-y-auto px-2 py-4 ${isFullSize ? 'h-[calc(100dvh-12.125rem)]' : 'h-80'}`}
             >
               {messages.map((m, index) => {
