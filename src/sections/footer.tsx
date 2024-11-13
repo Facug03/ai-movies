@@ -21,11 +21,11 @@ export function Footer() {
 
         <div className='flex flex-col gap-3'>
           <h5 className='text-m-t7 font-semibold uppercase text-w-50 sm:text-t6'>Let&apos;s Connect</h5>
-          <a className='text-m-t7 text-w-75 sm:text-t6' href='mailto:facundogonzales1550@gmail.com'>
-            Contact me
-          </a>
           <a className='text-m-t7 text-w-75 sm:text-t6' href='https://github.com/Facug03' target='_blank'>
             Github
+          </a>
+          <a className='text-m-t7 text-w-75 sm:text-t6' href='mailto:facundogonzales1550@gmail.com'>
+            Contact me
           </a>
           <a
             className='text-m-t7 text-w-75 sm:text-t6'
