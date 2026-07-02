@@ -33,3 +33,16 @@
   opacity: 0;
   transform: translate(50%, 50%) scale(0) !important;
 }
+
+@keyframes stream-in {
+  from {
+    transform: translateY(4px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.streaming > * {
+  animation: stream-in 0.2s ease-out both;
+}

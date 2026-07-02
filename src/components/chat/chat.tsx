@@ -1,7 +1,7 @@
 'use client'
 
-import { useChat } from 'ai/react'
-import { useEffect, useState } from 'react'
+import { useChat } from '@ai-sdk/react'
+import { useState, useEffect } from 'react'
 import Draggable from 'react-draggable'
 
 import Ai from '@/components/icons/Ai'
@@ -22,18 +22,18 @@ export default function Chat({ id }: Props) {
   const { favorites } = useFavorites()
   const { chats, toggleMinimize, closeChat, toggleFullSize } = useChatStore((state) => state)
   const { minimized, systemPrompt, title, mediaType, isFullSize } = chats.find((chat) => chat.id === id) ?? {}
-  const { messages, input, handleInputChange, handleSubmit, error, isLoading, setMessages, reload, setInput } = useChat(
-    {
-      initialMessages: [...generateFavoritesSystemPropmts(favorites ?? []), ...(systemPrompt ?? [])]
-    }
-  )
+  const [input, setInput] = useState('')
+  const { messages, sendMessage, error, status } = useChat({
+    messages: [...generateFavoritesSystemPropmts(favorites ?? []), ...(systemPrompt ?? [])],
+    experimental_throttle: 80
+  })
   const [isMobile, setIsMobile] = useState(() => {
     if (!window) return true
 
     return !window.matchMedia('(min-width: 768px)').matches
   })
   const [dragging, setDragging] = useState(false)
-  const [messagesContainerRef] = useScrollToBottom<HTMLDivElement>()
+  const [messagesContainerRef] = useScrollToBottom<HTMLDivElement>(status)
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 768px)')
@@ -56,6 +56,15 @@ export default function Chat({ id }: Props) {
       mediaQuery.removeEventListener('change', handleChange)
     }
   }, [toggleFullSize, id])
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!input.trim()) return
+    sendMessage({ text: input })
+    setInput('')
+  }
+
+  const isLoading = status === 'submitted' || status === 'streaming'
 
   return (
     <Draggable
@@ -90,6 +99,7 @@ export default function Chat({ id }: Props) {
 
               <div className='flex items-center gap-3'>
                 <button
+                  type='button'
                   aria-label='Minimize'
                   className='mr-1 h-4 w-4 hover:opacity-60'
                   onClick={() => {
@@ -102,6 +112,7 @@ export default function Chat({ id }: Props) {
                 </button>
                 {!isMobile && (
                   <button
+                    type='button'
                     onClick={() => toggleFullSize(id)}
                     className='relative h-4 w-4 text-t5 text-primary hover:opacity-60'
                   >
@@ -115,7 +126,7 @@ export default function Chat({ id }: Props) {
                     )}
                   </button>
                 )}
-                <button aria-label='Close' className='hover:opacity-60' onClick={() => closeChat(id)}>
+                <button type='button' aria-label='Close' className='hover:opacity-60' onClick={() => closeChat(id)}>
                   <Close styles='w-5 h-5 fill-primary' />
                 </button>
               </div>
@@ -123,11 +134,10 @@ export default function Chat({ id }: Props) {
 
             <TabsSlider
               mediaType={mediaType ?? 'Movie'}
-              reload={reload}
+              sendMessage={(message) => sendMessage({ text: message })}
               title={title ?? ''}
-              setMessages={setMessages}
               setInput={setInput}
-              isLoading={isLoading}
+              status={status}
             />
 
             <div
@@ -135,8 +145,16 @@ export default function Chat({ id }: Props) {
               className={`flex flex-col gap-3 overflow-y-auto px-2 py-4 ${isFullSize ? 'h-[calc(100dvh-12.125rem)]' : 'h-80'}`}
             >
               {messages.map((m, index) => {
-                if (messages.length - 1 === index) {
-                  return <Message key={m.id} message={m} />
+                const isLast = messages.length - 1 === index
+                if (isLast) {
+                  return (
+                    <Message
+                      key={m.id}
+                      message={m}
+                      isStreaming={status === 'streaming'}
+                      isPending={status === 'submitted'}
+                    />
+                  )
                 }
 
                 return <MemoMessage key={m.id} message={m} />
@@ -162,10 +180,11 @@ export default function Chat({ id }: Props) {
               className={`w-full bg-transparent text-w outline-none ${isFullSize ? 'text-m-t5 md:text-t5' : 'text-m-t7 sm:text-t7'}`}
               value={input}
               placeholder='Say something...'
-              onChange={handleInputChange}
+              onChange={(e) => setInput(e.target.value)}
             />
 
             <button
+              type='submit'
               className='flex size-7 flex-shrink-0 items-center justify-center rounded-full border-[1px] border-primary'
               disabled={isLoading}
             >

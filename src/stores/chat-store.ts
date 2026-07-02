@@ -1,6 +1,6 @@
 'use client'
 
-import { Message } from 'ai'
+import { UIMessage } from 'ai'
 import { createStore } from 'zustand/vanilla'
 
 import { MediaType } from '@/types/media'
@@ -11,7 +11,7 @@ export type ChatState = {
     id: string
     minimized: boolean
     isOpen: boolean
-    systemPrompt: Message[]
+    systemPrompt: UIMessage[]
     title: string
     mediaType: MediaType
     isFullSize: boolean
